@@ -1,0 +1,16 @@
+﻿{
+   "package-id": "hl7.fhir.us.exchange-routing",
+   "title": "Hybrid / Intermediary Exchange",
+   "canonical": "http://hl7.org/fhir/us/exchange-routing",
+   "introduction": "This FHIR implementation Guide describes the health care standard for HTTP exchange in a hybrid model of both point to point communication and intermediary.",
+   "category" : "EHR Access", 
+   "list": [
+      {
+         "version": "current",
+         "desc": "Continuous Integration Build for FHIR STU1 (latest in version control)",
+         "path": "http://build.fhir.org/ig/HL7/fhir-exchange-routing-ig",
+         "status": "ci-build",
+         "current": true
+      }
+   ]
+}

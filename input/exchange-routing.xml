@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ImplementationGuide
+    xmlns="http://hl7.org/fhir">
+    <id value="exchange-routing"/>
+    <meta>
+        <lastUpdated value="2021-03-01T00:00:00.000+00:00"/>
+    </meta>
+    <text>
+        <status value="additional"/>
+        <div
+            xmlns="http://www.w3.org/1999/xhtml">
+            <div>This FHIR implementation Guide describes the health care standard for HTTP exchange in a hybrid model of both point to point communication and intermediary.</div>
+        </div>
+    </text>
+    <url value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing"/>
+ 	<version value="0.1.0"/> 
+    <!-- <version value="current"/> -->
+    <name value="SpecialtyRx"/>
+    <title value="Hybrid/Intermediary Exchange"/>
+    <status value="draft"/>
+     <publisher value="HL7 International - FHIR Infrastructure" />
+    <contact>
+        <name value="HL7 International - FHIR Infrastructure"/>
+        <telecom>
+            <system value="url"/>
+            <value value="http://www.hl7.org/Special/committees/fiwg"/>
+        </telecom>
+    </contact>
+    <contact>
+      <name value="Frank McKinney" />
+      <telecom>
+        <system value="email" />
+        <value value="frank.mckinney@pocp.com" />
+      </telecom>
+    </contact>
+    <description value="This FHIR implementation Guide describes the health care standard for HTTP exchange in a hybrid model of both point to point communication and intermediary." />
+    <jurisdiction>
+      <coding>
+        <system value="urn:iso:std:iso:3166" />
+        <code value="US" />
+        <display value="United States of America" />
+      </coding>
+    </jurisdiction>
+    <packageId value="hl7.fhir.us.exchange-routing"/>
+    <fhirVersion value="4.0.1"/>
+    <definition>
+<!-- ************************************************************* Resources ************************************************************ -->
+
+<!--	  
+	
+	No resources have been defined yet
+
+-->
+
+<!-- ************************************************************* Pages ************************************************************ -->
+      <page>
+	      <nameUrl value="toc.html"/>
+	      <title value="Table of Contents"/>
+	      <generation value="html"/>
+		  <page>
+		    <nameUrl value="index.html"/>
+		    <title value="IG Home Page"/>
+	        <generation value="markdown"/>
+		  </page>
+		  <page>
+		    <nameUrl value="use-cases.html"/>
+		    <title value="Use Cases and Roles"/>
+	        <generation value="markdown"/>
+		  </page>
+		  <page>
+		    <nameUrl value="specification.html"/>
+		    <title value="Specification"/>
+		    <generation value="markdown"/>
+		  </page>	
+		  <page>
+		    <nameUrl value="downloads.html"/>
+		    <title value="Downloads"/>
+		    <generation value="html"/>
+		  </page>
+        </page>
+      <parameter>
+	    <code value="copyrightyear"/>
+	    <value value="2021+"/>
+	  </parameter>
+	  <parameter>
+	    <code value="releaselabel"/>
+	    <value value="CI Build"/>
+	  </parameter>
+      <parameter>
+	      <code value="path-expansion-params"/>
+	      <value value="input/terminology-settings.json"/>
+	      <value value="terminology-settings.json"/>
+      </parameter>
+	</definition>
+</ImplementationGuide>

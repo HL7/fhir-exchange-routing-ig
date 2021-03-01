@@ -1,2 +1,2 @@
 # fhir-exchange-routing-ig
-This FHIR implementation Guide describes the health care  standard for HTTP exchange in a  hybrid model of both point to point communication and intermediary
+This IG is meant to define the standard for how providers, payers, intermediaries, and other actors will use  routing information about the transaction originator and destination to support a hybrid model of point-to-point interaction as well as intermediary brokered interactions without the actors in either side needing detailed knowledge of how intermediary routing works.
