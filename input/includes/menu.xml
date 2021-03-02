@@ -9,21 +9,10 @@
       <li>
         <a href="use-cases.html">Background and Use Cases</a>
       </li>
-	  <li>
-        <a href="specification.html">Specification</a>
-      </li>
 	</ul>
   </li>
-  <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">FHIR Artifacts<b class="caret">
-      </b>
-    </a>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="artifacts.html">Conformance Artifacts</a>
-      </li>
-	</ul>
-  </li>
+  <li><a href="specification.html">Specification</a></li>
+  <li><a href="artifacts.html">FHIR Artifacts</a></li>
   <li class="dropdown">
     <a data-toggle="dropdown" href="#" class="dropdown-toggle">Support<b class="caret">
       </b>
