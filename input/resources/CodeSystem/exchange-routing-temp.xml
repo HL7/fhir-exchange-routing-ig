@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSystem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="exchange-routing-temp" />
+  <meta>
+    <lastUpdated value="2021-03-01T00:00:00-05:00" />
+  </meta>
+  <url value="http://hl7.org/fhir/us/exchange-routing/CodeSystem/exchange-routing-temp" />
+  <name value="ExchangeRoutingTemp" />
+  <title value="Exchange Routing Code System - Temp" />
+  <status value="active" />
+  <experimental value="false" />
+  <date value="2021-03-01T00:00:00-05:00" />
+  <publisher value="HL7 International - FHIR Infrastructure" />
+  <description value="This is a dummy resource to enable the IG to publish to the build site. It will eventually be removed." />
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166" />
+      <code value="US" />
+      <display value="United States of America" />
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="false" />
+  <content value="complete" />
+  <concept>
+    <code value="temp" />
+    <display value="Temp" />
+    <definition value="Temp concept" />
+  </concept>
+</CodeSystem>

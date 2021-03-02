@@ -48,9 +48,19 @@
 
 <!--	  
 	
-	No resources have been defined yet
+	No resources have been defined yet for this guide. In order for publishing to complete, I've added the dummy code system below
 
 -->
+
+  	  <resource>
+	    <reference>
+	      <reference value="CodeSystem/exchange-routing-temp"/>
+	      <display value="Exchange Routing CodeSystem - Temp"/>
+	    </reference>
+	    <name value="Exchange Routing CodeSystem - Temp"/>
+	    <exampleBoolean value="false"/>
+	  </resource>	  
+
 
 <!-- ************************************************************* Pages ************************************************************ -->
       <page>
