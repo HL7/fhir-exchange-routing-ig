@@ -1,28 +1,18 @@
-﻿### Implementation Guide Overview
-FHIR integration is typically point-to-point, where the initiating party communicates directly with the responding endpoint system using REST interactions. But there are circumstances where an originating party may wish to use an intermediary to facilitate communication with a destination endpoint.
+﻿### Overview
+As the need for integration between different actors in healthcare has grown, the aspect of transactions routings across one or more intermediaries such as clearinghouses, HIEs, national networks, and other exchanges is recognized. An example of this scenario is the situation in which a payer uses a clearinghouse intermediary as their 'gateway' for transactions. 
 
-For example, an originator may wish to delegate work associated maintaining connectivity with certain endpoints to an intermediary. Or it may participate in a value-added exchange network that provides business or technical services.
+There are both technical and business operational value adds in this intermediary model. This model was born in the world of the original X12 transaction set and is expected to continue in the evolving RESTful FHIR API integration model. Other networks including HIEs and national networks have emerged as brokering intermediaries (document access/exchange, e-prescribing, etc.), that may also engage in FHIR based interoperability.
 
-In these circumstances, an approach is needed for conveying routing metadata to participating intermediaries--in addition to the content of the exchange itself.
-
-This implementation guide defines a specification for transmitting that routing metadata, and describes exchange conventions for handling a range of scenarios that may arise when implementing the approach. 
+This implementation guide defines conventions for FHIR exchanges involving such intermediaries.
 
 <p></p>
 
-### Background
-
-As the need for integration between different actors in healthcare has grown, so have opportunities for participation of intermediaries such as clearinghouses, HIEs, national networks, and other exchanges. An example of this scenario is the situation in which a payer uses a clearinghouse intermediary as their 'gateway' for transactions and other exchanges.
-
-An intermediary model can provide both technical and business operational value-adds in various situations. The model was born in the world of the original X12 transaction set and is expected to continue in the evolving RESTful FHIR API integration model. Other networks including HIEs and national networks have emerged as brokering intermediaries (document access/exchange, e-prescribing, etc.), that may also engage in FHIR based interoperability.
-
-<p></p>
-
-### Solution Goals
+### Solution Features
 
 - Common pattern, used for many years in healthcare and other industries
 - Lightweight
-- Works for all RESTful operations including those that do not carry a payload, such as GET searches, so that routing information can be provided to an intermediary even if no FHIR resource is being exchanged
-- Universally usable, regardless of FHIR transaction – resource-agnostic.
+- Works even when doing GET or POST (i.e., searches or matches), so even if there is no FHIR resource being exchanged then routing information is still available
+- Universally usable, regardless of FHIR transaction – it’s resource agnostic
 
 <p></p>
 
@@ -59,7 +49,6 @@ The guide is organized into the following sections:
 	</tbody>
   </table>
 
-
 <p></p>
 
 ### Change Log
@@ -74,13 +63,8 @@ The guide is organized into the following sections:
 		<td>Mar 1, 2021</td>
 		<td>Skeleton draft</td>
   	  </tr>
-	  <tr>
-		<td>Mar 15, 2021</td>
-		<td>Additional draft content for review. Home, Use Cases and Specification pages.</td>
-  	  </tr>
    </tbody>
   </table>
-
 
 
 
