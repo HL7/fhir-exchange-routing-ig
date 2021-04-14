@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/us/exchange-routing/2021Jan" ciUrl="http://build.fhir.org/ig/HL7/exchange-routing" defaultVersion="0.1.0" defaultWorkgroup="pharm" gitUrl="https://github.com/HL7/fhir-exchange-routing" url="http://hl7.org/fhir/us/exchange-routing">
+<version code="current" url="http://build.fhir.org/ig/HL7/exchange-routing"/>
+<version code="0.1.0" url="http://hl7.org/fhir/us/exchange-routing/2021Jan"/>
+<version code="0.1" deprecated="true"/>
+<artifactPageExtension value="-definitions"/>
+<artifactPageExtension value="-examples"/>
+<artifactPageExtension value="-mappings"/>
+<artifact id="Bundle/exchange-routing-search-response-1-w-include" key="Bundle-exchange-routing-search-response-1-w-include" name="Search Response 1 with _included Medication Resource"/>
+<artifact id="Bundle/exchange-routing-search-response-2-w-revinclude" key="Bundle-exchange-routing-search-response-2-w-revinclude" name="Search Response 2 with _revincluded Provenance Resource"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-allergyintolerance" key="StructureDefinition-exchange-routing-allergyintolerance" name="Specialty Rx AllergyIntolerance"/>
+<artifact deprecated="true" id="AllergyIntolerance/exchange-routing-allergyintolerance-1" key="AllergyIntolerance-exchange-routing-allergyintolerance-1" name="Specialty Rx AllergyIntolerance - 1"/>
+<artifact id="StructureDefinition/exchange-routing-bundle-error" key="StructureDefinition-exchange-routing-bundle-error" name="Specialty Rx Bundle - Error Message"/>
+<artifact id="StructureDefinition/exchange-routing-bundle-query" key="StructureDefinition-exchange-routing-bundle-query" name="Specialty Rx Bundle - Query Message"/>
+<artifact id="StructureDefinition/exchange-routing-bundle-query-response-unsolicited" key="StructureDefinition-exchange-routing-bundle-query-response-unsolicited" name="Specialty Rx Bundle - Query Response - Unsolicited Message"/>
+<artifact id="StructureDefinition/exchange-routing-bundle-query-response" key="StructureDefinition-exchange-routing-bundle-query-response" name="Specialty Rx Bundle - Query Response Message"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-bundle-questionnaire" key="StructureDefinition-exchange-routing-bundle-questionnaire" name="Specialty Rx Bundle - Questionnaire Message"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-bundle-questionnaire-response" key="StructureDefinition-exchange-routing-bundle-questionnaire-response" name="Specialty Rx Bundle - Questionnaire Response Message"/>
+<artifact id="StructureDefinition/exchange-routing-bundle-search-result" key="StructureDefinition-exchange-routing-bundle-search-result" name="Specialty Rx Bundle - Search Result"/>
+<artifact id="CapabilityStatement/exchange-routing-data-consumer-messaging" key="CapabilityStatement-exchange-routing-data-consumer-messaging" name="Specialty Rx CapabilityStatement - Data Consumer - Messaging"/>
+<artifact id="CapabilityStatement/exchange-routing-data-consumer-restful" key="CapabilityStatement-exchange-routing-data-consumer-restful" name="Specialty Rx CapabilityStatement - Data Consumer - RESTful"/>
+<artifact deprecated="true" id="CapabilityStatement/exchange-routing-data-recipient" key="CapabilityStatement-exchange-routing-data-recipient" name="Specialty Rx CapabilityStatement - Data Recipient"/>
+<artifact deprecated="true" id="CapabilityStatement/exchange-routing-data-recipient-messaging" key="CapabilityStatement-exchange-routing-data-recipient-messaging" name="Specialty Rx CapabilityStatement - Data Recipient - Messaging"/>
+<artifact deprecated="true" id="CapabilityStatement/exchange-routing-data-recipient-restful" key="CapabilityStatement-exchange-routing-data-recipient-restful" name="Specialty Rx CapabilityStatement - Data Recipient - RESTful"/>
+<artifact deprecated="true" id="CapabilityStatement/exchange-routing-data-source" key="CapabilityStatement-exchange-routing-data-source" name="Specialty Rx CapabilityStatement - Data Source"/>
+<artifact id="CapabilityStatement/exchange-routing-data-source-messaging" key="CapabilityStatement-exchange-routing-data-source-messaging" name="Specialty Rx CapabilityStatement - Data Source - Messaging"/>
+<artifact id="CapabilityStatement/exchange-routing-data-source-restful" key="CapabilityStatement-exchange-routing-data-source-restful" name="Specialty Rx CapabilityStatement - Data Source - RESTful"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-careteam" key="StructureDefinition-exchange-routing-careteam" name="Specialty Rx CareTeam"/>
+<artifact deprecated="true" id="CareTeam/exchange-routing-careteam-1" key="CareTeam-exchange-routing-careteam-1" name="Specialty Rx CareTeam 1"/>
+<artifact id="CodeSystem/exchange-routing-event-type" key="CodeSystem-exchange-routing-event-type" name="Specialty Rx CodeSystem - Event Type"/>
+<artifact id="CodeSystem/exchange-routing-task-identifier-type" key="CodeSystem-exchange-routing-task-identifier-type" name="Specialty Rx CodeSystem - Task Identifier Type"/>
+<artifact id="CodeSystem/exchange-routing-task-input-type" key="CodeSystem-exchange-routing-task-input-type" name="Specialty Rx CodeSystem - Task Input Type"/>
+<artifact id="CodeSystem/exchange-routing-task-type" key="CodeSystem-exchange-routing-task-type" name="Specialty Rx CodeSystem - Task Type"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-condition" key="StructureDefinition-exchange-routing-condition" name="Specialty Rx Condition"/>
+<artifact deprecated="true" id="Condition/exchange-routing-condition-1" key="Condition-exchange-routing-condition-1" name="Specialty Rx Condition 1"/>
+<artifact id="StructureDefinition/exchange-routing-coverage" key="StructureDefinition-exchange-routing-coverage" name="Specialty Rx Coverage"/>
+<artifact id="Coverage/exchange-routing-coverage-1" key="Coverage-exchange-routing-coverage-1" name="Specialty Rx Coverage 1"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-endpoint-direct" key="StructureDefinition-exchange-routing-endpoint-direct" name="Specialty Rx Endpoint - Direct"/>
+<artifact deprecated="true" id="Endpoint/exchange-routing-endpoint-direct-1" key="Endpoint-exchange-routing-endpoint-direct-1" name="Specialty Rx Endpoint - Direct 1"/>
+<artifact id="Bundle/exchange-routing-error-1" key="Bundle-exchange-routing-error-1" name="Specialty Rx Error 1"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-location" key="StructureDefinition-exchange-routing-location" name="Specialty Rx Location"/>
+<artifact deprecated="true" id="Location/exchange-routing-location-1" key="Location-exchange-routing-location-1" name="Specialty Rx Location 1"/>
+<artifact id="StructureDefinition/exchange-routing-medicationrequest" key="StructureDefinition-exchange-routing-medicationrequest" name="Specialty Rx Medication Request"/>
+<artifact id="MedicationRequest/exchange-routing-medicationrequest-1" key="MedicationRequest-exchange-routing-medicationrequest-1" name="Specialty Rx MedicationRequest 1"/>
+<artifact id="MessageDefinition/exchange-routing-error" key="MessageDefinition-exchange-routing-error" name="Specialty Rx MessageDefinition - Error"/>
+<artifact id="MessageDefinition/exchange-routing-query" key="MessageDefinition-exchange-routing-query" name="Specialty Rx MessageDefinition - Query"/>
+<artifact id="MessageDefinition/exchange-routing-query-response" key="MessageDefinition-exchange-routing-query-response" name="Specialty Rx MessageDefinition - Query Response"/>
+<artifact id="MessageDefinition/exchange-routing-query-response-unsolicited" key="MessageDefinition-exchange-routing-query-response-unsolicited" name="Specialty Rx MessageDefinition - Query Response - Unsolicited"/>
+<artifact deprecated="true" id="MessageDefinition/exchange-routing-questionnaire" key="MessageDefinition-exchange-routing-questionnaire" name="Specialty Rx MessageDefinition - Questionnaire"/>
+<artifact deprecated="true" id="MessageDefinition/exchange-routing-questionnaire-response" key="MessageDefinition-exchange-routing-questionnaire-response" name="Specialty Rx MessageDefinition - Questionnaire Response"/>
+<artifact id="StructureDefinition/exchange-routing-messageheader-error" key="StructureDefinition-exchange-routing-messageheader-error" name="Specialty Rx MessageHeader - Error"/>
+<artifact id="StructureDefinition/exchange-routing-messageheader-query" key="StructureDefinition-exchange-routing-messageheader-query" name="Specialty Rx MessageHeader - Query"/>
+<artifact id="StructureDefinition/exchange-routing-messageheader-query-response" key="StructureDefinition-exchange-routing-messageheader-query-response" name="Specialty Rx MessageHeader - Query Response"/>
+<artifact id="StructureDefinition/exchange-routing-messageheader-query-response-unsolicited" key="StructureDefinition-exchange-routing-messageheader-query-response-unsolicited" name="Specialty Rx MessageHeader - Query Response - Unsolicited"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-messageheader-questionnaire" key="StructureDefinition-exchange-routing-messageheader-questionnaire" name="Specialty Rx MessageHeader - Questionnaire"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-messageheader-questionnaire-response" key="StructureDefinition-exchange-routing-messageheader-questionnaire-response" name="Specialty Rx MessageHeader - Questionnaire Response"/>
+<artifact deprecated="true" id="NamingSystem/exchange-routing-ncpdp-provider-id" key="NamingSystem-exchange-routing-ncpdp-provider-id" name="Specialty Rx NamingSystem - NCPDP Provider ID"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-observation-lab" key="StructureDefinition-exchange-routing-observation-lab" name="Specialty Rx Observation - Lab"/>
+<artifact deprecated="true" id="Observation/exchange-routing-observation-lab-1" key="Observation-exchange-routing-observation-lab-1" name="Specialty Rx Observation - Lab 1"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-organization-payer" key="StructureDefinition-exchange-routing-organization-payer" name="Specialty Rx Organization - Payer"/>
+<artifact deprecated="true" id="Organization/exchange-routing-organization-payer-1" key="Organization-exchange-routing-organization-payer-1" name="Specialty Rx Organization - Payer 1"/>
+<artifact id="StructureDefinition/exchange-routing-organization-pharmacy" key="StructureDefinition-exchange-routing-organization-pharmacy" name="Specialty Rx Organization - Pharmacy"/>
+<artifact id="Organization/exchange-routing-organization-pharmacy-1" key="Organization-exchange-routing-organization-pharmacy-1" name="Specialty Rx Organization - Pharmacy 1"/>
+<artifact id="Organization/exchange-routing-organization-pharmacy-2-unknown-telecom" key="Organization-exchange-routing-organization-pharmacy-2-unknown-telecom" name="Specialty Rx Organization - Pharmacy 2 - Unknown Telecom"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-organization-provider" key="StructureDefinition-exchange-routing-organization-provider" name="Specialty Rx Organization - Provider"/>
+<artifact deprecated="true" id="Organization/exchange-routing-organization-provider-1" key="Organization-exchange-routing-organization-provider-1" name="Specialty Rx Organization - Provider 1"/>
+<artifact id="StructureDefinition/exchange-routing-parameters-query" key="StructureDefinition-exchange-routing-parameters-query" name="Specialty Rx Parameters - Query"/>
+<artifact id="StructureDefinition/exchange-routing-parameters-query-response" key="StructureDefinition-exchange-routing-parameters-query-response" name="Specialty Rx Parameters - Query Response"/>
+<artifact id="StructureDefinition/exchange-routing-parameters-query-response-unsolicited" key="StructureDefinition-exchange-routing-parameters-query-response-unsolicited" name="Specialty Rx Parameters - Query Response - Unsolicited"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-parameters-questionnaire" key="StructureDefinition-exchange-routing-parameters-questionnaire" name="Specialty Rx Parameters - Questionnaire"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-parameters-questionnaire-response" key="StructureDefinition-exchange-routing-parameters-questionnaire-response" name="Specialty Rx Parameters - Questionnaire Response"/>
+<artifact id="StructureDefinition/exchange-routing-patient" key="StructureDefinition-exchange-routing-patient" name="Specialty Rx Patient"/>
+<artifact id="Patient/exchange-routing-patient-1" key="Patient-exchange-routing-patient-1" name="Specialty Rx Patient 1"/>
+<artifact id="StructureDefinition/exchange-routing-practitioner" key="StructureDefinition-exchange-routing-practitioner" name="Specialty Rx Practitioner"/>
+<artifact id="Practitioner/exchange-routing-practitioner-1" key="Practitioner-exchange-routing-practitioner-1" name="Specialty Rx Practitioner 1"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-practitionerrole" key="StructureDefinition-exchange-routing-practitionerrole" name="Specialty Rx PractitionerRole"/>
+<artifact deprecated="true" id="PractitionerRole/exchange-routing-practitionerrole-1" key="PractitionerRole-exchange-routing-practitionerrole-1" name="Specialty Rx PractitionerRole 1"/>
+<artifact id="Bundle/exchange-routing-query-1" key="Bundle-exchange-routing-query-1" name="Specialty Rx Query 1"/>
+<artifact id="Bundle/exchange-routing-query-response-unsolicited-1" key="Bundle-exchange-routing-query-response-unsolicited-1" name="Specialty Rx Query Response - Unsolicited 1"/>
+<artifact id="Bundle/exchange-routing-query-response-1" key="Bundle-exchange-routing-query-response-1" name="Specialty Rx Query Response 1"/>
+<artifact id="Bundle/exchange-routing-query-response-2" key="Bundle-exchange-routing-query-response-2" name="Specialty Rx Query Response 2"/>
+<artifact id="Bundle/exchange-routing-query-response-3-w-op-outcome" key="Bundle-exchange-routing-query-response-3-w-op-outcome" name="Specialty Rx Query Response 3 with operation outcome"/>
+<artifact deprecated="true" id="Bundle/exchange-routing-questionnaire-1" key="Bundle-exchange-routing-questionnaire-1" name="Specialty Rx Questionnaire 1"/>
+<artifact deprecated="true" id="Bundle/exchange-routing-questionnaire-response-1" key="Bundle-exchange-routing-questionnaire-response-1" name="Specialty Rx Questionnaire Response 1"/>
+<artifact deprecated="true" id="StructureDefinition/exchange-routing-relatedperson" key="StructureDefinition-exchange-routing-relatedperson" name="Specialty Rx RelatedPerson"/>
+<artifact deprecated="true" id="RelatedPerson/exchange-routing-relatedperson-1" key="RelatedPerson-exchange-routing-relatedperson-1" name="Specialty Rx RelatedPerson 1"/>
+<artifact id="StructureDefinition/exchange-routing-task-smart-launch" key="StructureDefinition-exchange-routing-task-smart-launch" name="Specialty Rx Task - SMART Launch"/>
+<artifact id="Task/exchange-routing-task-smart-launch-1" key="Task-exchange-routing-task-smart-launch-1" name="Specialty Rx Task - SMART Launch 1"/>
+<artifact id="Task/exchange-routing-task-smart-launch-2-ids" key="Task-exchange-routing-task-smart-launch-2-ids" name="Specialty Rx Task - SMART Launch 2 with IDs"/>
+<artifact deprecated="true" id="ValueSet/exchange-routing-condition-code" key="ValueSet-exchange-routing-condition-code" name="Specialty Rx ValueSet - Condition Code"/>
+<artifact id="ValueSet/exchange-routing-event-type" key="ValueSet-exchange-routing-event-type" name="Specialty Rx ValueSet - Event Type"/>
+<artifact id="ValueSet/exchange-routing-task-type" key="ValueSet-exchange-routing-task-type" name="Specialty Rx ValueSet - Task Type"/>
+<page key="NA" name="(NA)"/>
+<page key="many" name="(many)"/>
+<page key="artifacts" name="Artifacts Summary"/>
+<page key="capability-statements" name="Capability Statements"/>
+<page key="missing-data" name="Conformance Expectations"/>
+<page key="downloads" name="Downloads"/>
+<page key="error-handling" name="Error handling"/>
+<page key="index" name="IG Home Page"/>
+<page key="human-interaction" name="Information Flows Requiring Human Interaction"/>
+<page key="intermediary" name="Intermediary Facilitation"/>
+<page key="message-structure" name="Message Structures"/>
+<page key="message-submission" name="Message submission"/>
+<page key="patient-matching" name="Patient Matching"/>
+<page key="request-queries" name="Search Conventions"/>
+<page key="security" name="Security"/>
+<page key="systematic-queries" name="Systematic Query Workflows"/>
+<page key="toc" name="Table of Contents"/>
+<page deprecated="true" key="terminology" name="Terminology"/>
+<page key="us-core-profiles" name="US Core Profiles"/>
+<page key="roles" name="Use Cases and Roles"/>
+<page deprecated="true" key="workflow" name="Workflow Scenarios"/>
+</specification>

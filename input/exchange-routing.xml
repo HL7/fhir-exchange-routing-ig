@@ -60,7 +60,15 @@
 	    <name value="Exchange Routing CodeSystem - Temp"/>
 	    <exampleBoolean value="false"/>
 	  </resource>	  
-
+	  <resource>
+	      <reference>
+	        <reference value="Bundle/exchange-routing-bundle-1"/>
+                <display value="Exchange Routing Bundle 1"/>
+            </reference>
+            <name value="Exchange Routing Bundle 1"/>
+            <description value="Example of a Bundle to test exchange routing concepts."/>
+		    <exampleBoolean value="true"/>
+      </resource>	  
 
 <!-- ************************************************************* Pages ************************************************************ -->
       <page>

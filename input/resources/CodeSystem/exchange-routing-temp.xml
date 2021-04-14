@@ -22,8 +22,8 @@
   <caseSensitive value="false" />
   <content value="complete" />
   <concept>
-    <code value="temp" />
-    <display value="Temp" />
-    <definition value="Temp concept" />
+    <code value="query" />
+    <display value="Query" />
+    <definition value="Query" />
   </concept>
 </CodeSystem>
