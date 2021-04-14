@@ -17,14 +17,54 @@ This guide does not provide guidance for:
 
 ### Intermediary Roles
 
-| Intermediary  Role                           | *In this role, the intermediary  works for…* | Description                                                  | Benefit provided                                             | Notes                                                        |
-| -------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ***Supported in this guide:***               |                                              |                                                              |                                                              |                                                              |
-| Inbound  Gateway                             | Destination                                  | The intermediary receives all requests to the destination and  forwards them to the destination system | The destination  delegates the responsibility of securing a public endpoint and potentially  other work (registering clients, etc.) to the intermediary | Common intermediary role for financial and administrative data exchange. DNS entries can be  used to “point” the destination's public URL to the intermediary that’s serving as a proxy for the destination |
-| Delegated  Function Intermediary             | An Inbound Gateway intermediary              | One  intermediary transports traffic from a different intermediary to a receiving  system | The *delegating*  intermediary gives responsibility for maintaining a connection to the  receiving destination system (including security requirements, etc.) to the Delegated  Function Intermediary | E.g., A payer  that delegates utilization management for a type of service to a different  organization and/or system. The inter deliver to a particular recipient.      The partner  intermediaries may share non-public routing information to support delivery  to the ultimate receiver |
-| ***Not currently supported in this guide:*** |                                              |                                                              | ***These are described here to explicitly identify certain intermediary roles that this guide does not address at this time.*** |                                                              |
-| Outbound  Gateway                            | Originator                                   | The  originator directs some or all of its requests to the intermediary, who  forwards them to the desired responders | Originator  delegates the work of maintaining connections for multiple endpoints (registration,  security credentials, etc.) to the intermediary.  Also enables  the intermediary to provide searching and business logic to identify a  responder that fits the originator’s criteria.  Often  connected to originator via an VPN. | Used in  e-prescribing when the sender doesn’t know the specific receiving system  (prescription renewals, certain benefit requests).     Not common in  other environments |
-| Exchange  Network                            | Both the Originator and the Destination      | The  intermediary provides a closed “hub and spoke” environment in which  participants exchange with each other through a single, common intermediary  connection | *Combination  of Outbound Gateway and Inbound Gateway, above.* Enables originators to maintain a  single outbound connection instead  of multiple.  Network ensures secure inbound connection | Example: a Health Information Exchange                       |
+<table class="grid">
+  <thead>
+    <tr>
+      <th>Intermediary  Role</th>
+      <th><em>In this role, the intermediary  works for…</em></th>
+      <th>Description</th>
+      <th>Benefit provided</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="5"><strong><em>Supported in this guide:</em></strong></td>
+    </tr>
+    <tr>
+      <td>Inbound  Gateway</td>
+      <td>Destination</td>
+      <td>The intermediary receives all requests to the destination and  forwards them to the destination system</td>
+      <td>The destination  delegates the responsibility of securing a public endpoint and potentially  other work (registering clients, etc.) to the intermediary</td>
+      <td>Common intermediary role for financial and administrative data exchange. DNS entries can be  used to “point” the destination’s public URL to the intermediary that’s serving as a proxy for the destination</td>
+    </tr>
+    <tr>
+      <td>Delegated  Function Intermediary</td>
+      <td>An Inbound Gateway intermediary</td>
+      <td>One  intermediary transports traffic from a different intermediary to a receiving  system</td>
+      <td>The <em>delegating</em>  intermediary gives responsibility for maintaining a connection to the  receiving destination system (including security requirements, etc.) to the Delegated  Function Intermediary</td>
+      <td>E.g., A payer  that delegates utilization management for a type of service to a different  organization and/or system. The inter deliver to a particular recipient.      The partner  intermediaries may share non-public routing information to support delivery  to the ultimate receiver</td>
+    </tr>
+    <tr>
+      <td colspan="5"><strong><em>Not currently supported in this guide.</em></strong> These are described here to explicitly identify certain intermediary roles that this guide does not address at this time.
+</td>     
+    </tr>
+    <tr>
+      <td>Outbound  Gateway</td>
+      <td>Originator</td>
+      <td>The  originator directs some or all of its requests to the intermediary, who  forwards them to the desired responders</td>
+      <td>Originator  delegates the work of maintaining connections for multiple endpoints (registration,  security credentials, etc.) to the intermediary.  Also enables  the intermediary to provide searching and business logic to identify a  responder that fits the originator’s criteria.  Often  connected to originator via an VPN.</td>
+      <td>Used in  e-prescribing when the sender doesn’t know the specific receiving system  (prescription renewals, certain benefit requests).     Not common in  other environments</td>
+    </tr>
+    <tr>
+      <td>Exchange  Network</td>
+      <td>Both the Originator and the Destination</td>
+      <td>The  intermediary provides a closed “hub and spoke” environment in which  participants exchange with each other through a single, common intermediary  connection</td>
+      <td><em>Combination  of Outbound Gateway and Inbound Gateway, above.</em> Enables originators to maintain a  single outbound connection instead  of multiple.  Network ensures secure inbound connection</td>
+      <td>Example: a Health Information Exchange</td>
+    </tr>
+  </tbody>
+</table>
 
 <p></p>
 
@@ -40,8 +80,8 @@ While there are many potential exchange scenarios in which an intermediary could
 Use cases are separated into two groups below:
 
 - **synchronous** exchanges, in which participating intermediaries stay connected until the destination's response is forwarded to the originator
-  - Use Case 1: [Request routed through a single Inbound Gateway intermediary](#Request routed through a single Inbound Gateway intermediary)
-  - Use Case 2: [Destination uses an Inbound Gateway Intermediary that, in turn has a relationship with a Delegated Function Intermediary to deliver certain exchanges](Destination uses an Inbound Gateway Intermediary that, in turn has a relationship with a Delegated Function Intermediary to deliver certain exchanges)
+  - Use Case: [Request routed through a single Inbound Gateway intermediary](#request-routed-through-a-single-inbound-gateway-intermediary)
+  - Use Case: [Destination uses an Inbound Gateway Intermediary that, in turn has a relationship with a Delegated Function Intermediary to deliver certain exchanges](destination-uses-an-inbound-gateway-intermediary-that-in-turn-has-a-relationship-with-a-delegated-function-intermediary-to-deliver-certain-exchanges)
 - **asynchronous** exchanges that follow the [FHIR Asynchronous Request pattern](http://hl7.org/fhir/async.html), as used in the [Bulk Data Access IG](https://hl7.org/fhir/uv/bulkdata/index.html)
   - Use Case 3: tbd
 
@@ -57,7 +97,7 @@ In this method, the destination uses a public FHIR service base URL that reflect
 
 The intermediary bases routing on the network IP address at which it receives the request (the IP to which the public URL's DNS record is mapped).
 
-**Base URL reflecting the intermediary's identity, followed by a path indicating the destination**, such as <br/>
+**Intermediary's base URL followed by a path indicating the destination**, such as <br/>
 `fhir.example-intermediary.com/example-destination`
 
 In this method, the destination's public FHIR service URL consists of:
@@ -67,7 +107,7 @@ In this method, the destination's public FHIR service URL consists of:
 
 The intermediary bases routing on the path segment that indicates the destination.
 
-**Base URL reflecting the intermediary's identity, accompanied by routing metadata passed in an HTTP header parameter**, such as <br/>URL: `fhir.example-intermediary.com` 
+**Intermediary's base URL accompanied by routing metadata passed in an HTTP header parameter**, such as <br/>URL: `fhir.example-intermediary.com` 
 HTTP header parameter: `X-Destination: example-destination`
 
 In this method, the destination's public FHIR service address consists of: 
@@ -77,11 +117,13 @@ In this method, the destination's public FHIR service address consists of:
 
 The intermediary bases routing on the value passed in the `X-Destination` parameter.
 
-
+<p></p>
 
 ### Synchronous Use Cases
 
-#### 1. Request routed through a single Inbound Gateway intermediary 
+<p></p>
+
+#### Request routed through a single Inbound Gateway intermediary 
 
 This use case supports a situation where the destination delegates the responsibility of securing a public endpoint--and potentially performing other functions such as registering clients--to an intermediary. A single intermediary participates in this exchange, forwarding requests directly from the originator to the destination.
 
@@ -123,7 +165,7 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-#### FHIR service address option 1 - Base URL reflects the destination's identity
+***FHIR service address option 1 - Base URL reflects the destination's identity***
 
 <div><p>
   <img src="uc-search-single-intermediary-dest-url.png" style="float:none">  
@@ -132,7 +174,25 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
  <p></p>
 
-#### 2. Destination uses an Inbound Gateway Intermediary that, in turn has a relationship with a Delegated Function Intermediary to deliver certain exchanges
+***FHIR service address option 2 - Intermediary's Base URL followed by a path indicating the destination***
+
+<div><p>
+  <img src="uc-search-single-intermediary-int-url-plus-segment.png" style="float:none">  
+    </p>
+</div>
+
+<p></p>
+
+***FHIR service address option 2 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
+
+<div><p>
+  <img src="uc-search-single-intermediary-int-url-header.png" style="float:none">  
+    </p>
+</div>
+
+<p></p>
+
+#### Destination uses an Inbound Gateway Intermediary that, in turn has a relationship with a Delegated Function Intermediary to deliver certain exchanges
 
 This use case supports a situation where a second intermediary is used for delivery of a subset of requests addressed to the destination's public FHIR service address. 
 
