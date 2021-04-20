@@ -26,7 +26,7 @@ This implementation guide is intended be used in the United States.
 
 The guide is organized into the following sections:
 
-- [Background and Use Cases](use-cases.html) gives an overview of the guide's goals and participants.
+- [Use Cases and Roles](use-cases.html) gives an overview of the guide's goals and participants.
 - [Specification](specification.html) describes the solution in detail.
 - ...
 
@@ -62,6 +62,14 @@ The guide is organized into the following sections:
 	  <tr>
 		<td>Mar 1, 2021</td>
 		<td>Skeleton draft</td>
+  	  </tr>
+	  <tr>
+		<td>Date</td>
+		<td>Change</td>
+  	  </tr>
+	  <tr>
+		<td>April 12-20, 2021</td>
+		<td>Expanded Use Cases and Roles and Specification pages to reflect current group discussion</td>
   	  </tr>
    </tbody>
   </table>
