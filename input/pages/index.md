@@ -68,8 +68,8 @@ The guide is organized into the following sections:
 		<td>Change</td>
   	  </tr>
 	  <tr>
-		<td>April 12-20, 2021</td>
-		<td>Expanded Use Cases and Roles and Specification pages to reflect current group discussion</td>
+		<td>April 12-22, 2021</td>
+		<td>Expanded Use Cases and Roles and Specification pages to reflect current group discussion. Added draft Exception Handling page</td>
   	  </tr>
    </tbody>
   </table>

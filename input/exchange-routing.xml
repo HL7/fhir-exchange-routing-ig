@@ -86,6 +86,11 @@
 	        <generation value="markdown"/>
 		  </page>
 		  <page>
+		    <nameUrl value="exceptions.html"/>
+		    <title value="Exception Handling"/>
+	        <generation value="markdown"/>
+		  </page>
+		  <page>
 		    <nameUrl value="specification.html"/>
 		    <title value="Specification"/>
 		    <generation value="markdown"/>

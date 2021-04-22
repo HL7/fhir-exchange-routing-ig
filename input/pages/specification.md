@@ -1,6 +1,18 @@
 This section further describes details of the scenarios introduced in the [Use Cases and Roles](use-cases.html) section, and specifies approaches for "addressing" exchanges between the originating system, participating intermediaries and the ultimate destination system. 
 
-### Options for constructing the public FHIR service address
+<p></p>
+
+### Public FHIR service address of the destination
+
+The routing approaches described in this guide assume that the destination has a **single, public FHIR service base "address" for each FHIR service it makes available.** That address may be constructed using different conventions (see below), but in all cases:
+
+- References to the destination's FHIR service in resources returned by the destination SHALL be consistent with the destination's single public FHIR service base address. 
+
+For example, the Bundle.entry.fullUrl element for a resource accessible from the destination SHALL contain the same FHIR service base address as the destination would publish in a public endpoint directory.  
+
+<p></p>
+
+### Options for constructing the destination's public FHIR service address
 
 For each of the above use below, three models may be used to construct and use the destination's public FHIR service address. The first two approaches result in a URL, and the third results in a URL that is accompanied by additional metadata to be conveyed in the HTTP header (in an X-Destination parameter).
 
@@ -29,6 +41,12 @@ In this method, the destination's public FHIR service address consists of:
 - paired with metadata passed in the HTTP header's `X-Destination` parameter.
 
 The intermediary bases routing on the value passed in the `X-Destination` parameter.
+
+<p></p>
+
+NOTE: In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the X-Destination parameter value must somehow be captured alongside the service URL in FHIR elements (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element).
+
+This guide's preliminary approach is to represent the X-Destination in an extension on the element containing the service base URL.
 
 <p></p>
 
@@ -191,6 +209,8 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 <p></p>
 
 ### Asynchronous Scenarios
+
+<p></p>
 
 #### Originator initiates an asynchronous retrieval of data from a Destination that uses an Inbound Gateway Intermediary
 

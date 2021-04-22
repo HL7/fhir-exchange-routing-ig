@@ -9,6 +9,9 @@
       <li>
         <a href="use-cases.html">Use Cases and Roles</a>
       </li>
+      <li>
+        <a href="exceptions.html">Exception Handling</a>
+      </li>
 	</ul>
   </li>
   <li><a href="specification.html">Specification</a></li>
