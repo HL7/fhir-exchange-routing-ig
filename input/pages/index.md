@@ -64,7 +64,7 @@ The guide is organized into the following sections:
 		<td>Skeleton draft</td>
   	  </tr>
 	  <tr>
-		<td>April 12-22, 2021</td>
+		<td>April 12-23, 2021</td>
 		<td>Expanded Use Cases and Roles and Specification pages to reflect current group discussion. Added draft Exception Handling page</td>
   	  </tr>
    </tbody>

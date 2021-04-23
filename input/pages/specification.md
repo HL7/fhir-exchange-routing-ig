@@ -116,7 +116,7 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-***FHIR service address option 2 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
+***FHIR service address option 3 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
 
 <div><p>
   <img src="uc-search-single-intermediary-int-url-header.png" style="float:none">  
@@ -198,7 +198,7 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-***FHIR service address option 2 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
+***FHIR service address option 3 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
 
 <div><p>
   <img src="uc-search-two-intermediaries-int-url-header.png" style="float:none">  
@@ -274,7 +274,7 @@ The originator later retrieves the response data using the address previously re
 
 <p></p>
 
-***FHIR service address option 2 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
+***FHIR service address option 3 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
 
 <div><p>
   <img src="uc-async-single-intermediary-int-url-header.png" style="float:none">  
