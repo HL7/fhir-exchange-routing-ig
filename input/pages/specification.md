@@ -46,7 +46,7 @@ The intermediary bases routing on the value passed in the `X-Destination` parame
 
 *This guide's preliminary approach is to represent the X-Destination in an extension on the element containing the service base URL.*
 
-**4. Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>`fhir.example-intermediary.com/?x-destination=example-destination`
+**4. Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>`fhir.example-intermediary.com/?_x-destination=12345`
 
 In this method, the destination's public FHIR service address consists of: 
 
@@ -55,9 +55,10 @@ In this method, the destination's public FHIR service address consists of:
 
 The parameter is:
 
-- added to the end of the request URL if it does not otherwise contain a query string. For example, in a GET that requests a resource by its identifier, the x-destination is appended to the end of the request: `GET http://fhir.intermediary.com/Patient/P1?x-destination=12345`
+- added to the end of the request URL if it does not otherwise contain a query string. For example, in a GET that requests a resource by its identifier, the x-destination is appended to the end of the request: `GET http://fhir.intermediary.com/Patient/P1?_x-destination=12345`
 - added as an additional parameter if the request already contains a query string. For example, in a search: 
-  `GET http://fhir.intermediary.com/Patient?family:exact=Cook&given=jennifer&x-destination=12345`
+  `GET http://fhir.intermediary.com/Patient?family:exact=Cook&given=jennifer`
+  `&_x-destination=12345`
 
 The intermediary bases routing on the value passed in the `x-destination` parameter, and then strips it from the URL string before forwarding the request to the destination system.
 
@@ -68,7 +69,7 @@ For example, in a search submitted to `http//fhir.intermediary.com` with the que
 - if the response returned from the destination to the intermediary contains this entry.fullUrl value:
   `http://fhir.destination.com/Patient/1`
 - the intermediary rewrites the fullUrl value to
-  `http://fhir.intermediary.com/ Patient/P1?x-destination=12345`
+  `http://fhir.intermediary.com/Patient/P1?_x-destination=12345`
 
 <p></p>
 
