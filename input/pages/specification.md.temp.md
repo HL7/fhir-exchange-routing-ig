@@ -14,15 +14,15 @@ For example, the Bundle.entry.fullUrl element for a resource accessible from the
 
 ### Options for constructing the destination's public FHIR service address
 
-Four models may be used to construct and use the destination's public FHIR service address. Three approaches result in a URL, and the third results in a URL that is accompanied by additional metadata to be conveyed in the HTTP header (in an X-Destination parameter).
+For each of the above use below, three models may be used to construct and use the destination's public FHIR service address. The first two approaches result in a URL, and the third results in a URL that is accompanied by additional metadata to be conveyed in the HTTP header (in an X-Destination parameter).
 
-**1. Base URL that reflects the destination's identity,** such as <br/>`fhir.example-destination.com`
+**Base URL that reflects the destination's identity,** such as <br/>`fhir.example-destination.com`
 
 In this method, the destination uses a public FHIR service base URL that reflects its own identity and, in turn, hides participation of the Inbound Gateway Intermediary it employs.
 
 The intermediary bases routing on the network IP address at which it receives the request (the IP to which the public URL's DNS record is mapped).
 
-**2. Intermediary's base URL followed by a path indicating the destination**, such as <br/>
+**Intermediary's base URL followed by a path indicating the destination**, such as <br/>
 `fhir.example-intermediary.com/example-destination`
 
 In this method, the destination's public FHIR service URL consists of:
@@ -32,7 +32,7 @@ In this method, the destination's public FHIR service URL consists of:
 
 The intermediary bases routing on the path segment that indicates the destination.
 
-**3. Intermediary's base URL accompanied by routing metadata passed in an HTTP header parameter**, such as <br/>URL: `fhir.example-intermediary.com` 
+**Intermediary's base URL accompanied by routing metadata passed in an HTTP header parameter**, such as <br/>URL: `fhir.example-intermediary.com` 
 HTTP header parameter: `X-Destination: example-destination`
 
 In this method, the destination's public FHIR service address consists of: 
@@ -42,11 +42,7 @@ In this method, the destination's public FHIR service address consists of:
 
 The intermediary bases routing on the value passed in the `X-Destination` parameter.
 
-*Note: In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the X-Destination parameter value must somehow be captured alongside the service URL in FHIR elements (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element).*
-
-*This guide's preliminary approach is to represent the X-Destination in an extension on the element containing the service base URL.*
-
-**4. Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>`fhir.example-intermediary.com/?x-destination=example-destination`
+**Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>URL: `fhir.example-intermediary.com/?x-destination=example-destination`
 
 In this method, the destination's public FHIR service address consists of: 
 
@@ -59,7 +55,7 @@ The parameter is:
 - added as an additional parameter if the request already contains a query string. For example, in a search: 
   `GET http://fhir.intermediary.com/Patient?family:exact=Cook&given=jennifer&x-destination=12345`
 
-The intermediary bases routing on the value passed in the `x-destination` parameter, and then strips it from the URL string before forwarding the request to the destination system.
+The intermediary bases routing on the value passed in the `x-destination` parameter.
 
 *Response content URL rewriting.* In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the intermediary rewrites full FHIR service URLs contained in FHIR resources returned by the destination (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element) to match the URL + x-destination query string to which the originator submitted the request.
 
@@ -144,15 +140,6 @@ The originator accepts the response. If it wishes to submit a follow-on request 
   <img src="uc-search-single-intermediary-int-url-header.png" style="float:none">  
     </p>
 </div>
-<p></p>
-
-***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in a query string parameter***
-
-<div><p>
-  <img src="uc-search-single-intermediary-int-url-query.png" style="float:none">  
-    </p>
-</div>
-
 
 
 <p></p>

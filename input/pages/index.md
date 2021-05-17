@@ -67,6 +67,10 @@ The guide is organized into the following sections:
 		<td>April 12-23, 2021</td>
 		<td>Expanded Use Cases and Roles and Specification pages to reflect current group discussion. Added draft Exception Handling page</td>
   	  </tr>
+	  <tr>
+		<td>May 17, 2021</td>
+		<td>Added draft material to the Specification page describing a fourth addressing approach that passes routing information in a query string parameter</td>
+  	  </tr>
    </tbody>
   </table>
 
