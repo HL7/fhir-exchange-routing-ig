@@ -22,7 +22,13 @@ In this method, the destination uses a public FHIR service base URL that reflect
 
 The intermediary bases routing on the network IP address at which it receives the request (the IP to which the public URL's DNS record is mapped).
 
-**2. Intermediary's base URL followed by a path indicating the destination**, such as <br/>
+**2. Subdomain of intermediary's URL that identifies the destination,** such as <br/>`example-destination.example-intermediary.com`
+
+In this method, the destination is represented using a subdomain of the Inbound Gateway Intermediary's  URL.
+
+The intermediary bases routing on the network IP address to which the subdomain's DNS record is mapped.
+
+**3. Intermediary's base URL followed by a path indicating the destination**, such as <br/>
 `fhir.example-intermediary.com/example-destination`
 
 In this method, the destination's public FHIR service URL consists of:
@@ -32,7 +38,7 @@ In this method, the destination's public FHIR service URL consists of:
 
 The intermediary bases routing on the path segment that indicates the destination.
 
-**3. Intermediary's base URL accompanied by routing metadata passed in an HTTP header parameter**, such as <br/>URL: `fhir.example-intermediary.com` 
+**4. Intermediary's base URL accompanied by routing metadata passed in an HTTP header parameter**, such as <br/>URL: `fhir.example-intermediary.com` 
 HTTP header parameter: `X-Destination: example-destination`
 
 In this method, the destination's public FHIR service address consists of: 
@@ -46,7 +52,13 @@ The intermediary bases routing on the value passed in the `X-Destination` parame
 
 *This guide's preliminary approach is to represent the X-Destination in an extension on the element containing the service base URL.*
 
-**4. Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>`fhir.example-intermediary.com/?_x-destination=12345`
+**Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>`fhir.example-intermediary.com/?_x-destination=12345`
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+***Note:** Discussion in the May 2021 HL7 FHIR Connectathon determined that this approach would create URL strings that do not conform with FHIR requirements.*
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
 
 In this method, the destination's public FHIR service address consists of: 
 
@@ -64,12 +76,16 @@ The intermediary bases routing on the value passed in the `x-destination` parame
 
 *Response content URL rewriting.* In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the intermediary rewrites full FHIR service URLs contained in FHIR resources returned by the destination (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element) to match the URL + x-destination query string to which the originator submitted the request.
 
-For example, in a search submitted to `http//fhir.intermediary.com` with the query string containing `x-destination=12345`:
+### Response Content URL Rewriting
 
-- if the response returned from the destination to the intermediary contains this entry.fullUrl value:
+In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the intermediary may need to rewrite full FHIR service URLs contained in FHIR resources returned by the destination (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element) to match the URL to which the originator submitted the request.
+
+For example, in a search submitted to `http//dest12345.intermediary.com`  (using option 2 above, *Subdomain of intermediary's URL that reflects the destination's identity*):
+
+- if the response returned from the destination to the intermediary contains this entry.fullUrl value, which reflects a private destination server address:
   `http://fhir.destination.com/Patient/1`
 - the intermediary rewrites the fullUrl value to
-  `http://fhir.intermediary.com/Patient/P1?_x-destination=12345`
+  `http://dest12345.intermediary.com/Patient/P1`
 
 <p></p>
 
@@ -125,21 +141,25 @@ The originator accepts the response. If it wishes to submit a follow-on request 
   <img src="uc-search-single-intermediary-dest-url.png" style="float:none">  
     </p>
 </div>
+<p></p>
 
+***FHIR service address option 2 - Subdomain of intermediary's URL identifies the destination***
 
- <p></p>
+<div><p>
+  <img src="uc-search-single-intermediary-subdomain.png" style="float:none">  
+    </p>
+</div>
+<p></p>
 
-***FHIR service address option 2 - Intermediary's Base URL followed by a path indicating the destination***
+***FHIR service address option 3 - Intermediary's Base URL followed by a path indicating the destination***
 
 <div><p>
   <img src="uc-search-single-intermediary-int-url-plus-segment.png" style="float:none">  
     </p>
 </div>
-
-
 <p></p>
 
-***FHIR service address option 3 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
+***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
 
 <div><p>
   <img src="uc-search-single-intermediary-int-url-header.png" style="float:none">  
@@ -147,7 +167,13 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 </div>
 <p></p>
 
-***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in a query string parameter***
+***[TO BE REMOVED] FHIR service address option - Intermediary's Base URL with routing metadata passed in a query string parameter***
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+***Note:** Discussion in the May 2021 HL7 FHIR Connectathon determined that this approach would create URL strings that do not conform with FHIR requirements.*
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
 
 <div><p>
   <img src="uc-search-single-intermediary-int-url-query.png" style="float:none">  
@@ -214,23 +240,25 @@ The originator accepts the response. If it wishes to submit a follow-on request 
   <img src="uc-search-two-intermediaries-dest-url.png" style="float:none">  
     </p>
 </div>
+<p></p>
 
+***FHIR service address option 2 - Subdomain of intermediary's URL identifies the destination***
 
+<div><p>
+  <img src="uc-search-two-intermediaries-int-subdomain.png" style="float:none">  
+    </p>
+</div>
+<p></p>
 
- <p></p>
-
-***FHIR service address option 2 - Intermediary's Base URL followed by a path indicating the destination***
+***FHIR service address option 3 - Intermediary's Base URL followed by a path indicating the destination***
 
 <div><p>
   <img src="uc-search-two-intermediaries-int-url-plus-segment.png" style="float:none">  
     </p>
 </div>
-
-
-
 <p></p>
 
-***FHIR service address option 3 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
+***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
 
 <div><p>
   <img src="uc-search-two-intermediaries-int-url-header.png" style="float:none">  
@@ -295,7 +323,19 @@ The originator later retrieves the response data using the address previously re
 
  <p></p>
 
-***FHIR service address option 2 - Intermediary's Base URL followed by a path indicating the destination***
+***FHIR service address option 2 - Subdomain of intermediary's URL identifies the destination***
+
+<div><p>
+  <img src="uc-async-single-intermediary-subdomain.png" style="float:none">  
+    </p>
+</div>
+
+
+
+
+<p></p>
+
+***FHIR service address option 3 - Intermediary's Base URL followed by a path indicating the destination***
 
 <div><p>
   <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none">  
@@ -306,7 +346,7 @@ The originator later retrieves the response data using the address previously re
 
 <p></p>
 
-***FHIR service address option 3 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
+***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
 
 <div><p>
   <img src="uc-async-single-intermediary-int-url-header.png" style="float:none">  

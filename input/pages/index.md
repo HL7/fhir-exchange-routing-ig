@@ -46,6 +46,10 @@ The guide is organized into the following sections:
 		<td>Patrick Murta</td>
 		<td><a href="mailto:pmurta@humana.com">pmurta@humana.com</a></td>
 	  </tr>
+	  <tr>
+		<td>Frank McKinney</td>
+		<td><a href="mailto:frank.mckinney@pocp.com">frank.mckinney@pocp.com</a></td>
+	  </tr>
 	</tbody>
   </table>
 
@@ -70,6 +74,10 @@ The guide is organized into the following sections:
 	  <tr>
 		<td>May 17, 2021</td>
 		<td>Added draft material to the Specification page describing a fourth addressing approach that passes routing information in a query string parameter</td>
+  	  </tr>
+	  <tr>
+		<td>June 12, 2021</td>
+		<td>Adjusted Specification page based on Connectathon feedback: added "intermediary subdomain" as another option for constructing the destination’s public FHIR service address and added a note to "Intermediary’s base URL accompanied by routing metadata passed in a query string parameter" stating that Connectathon discussion deterimined that the option results in invalid FHIR URLs in some cases.    Adjusted exchange flow diagrams to consistently refer to the intermediary's URL as example-int.com and the destination's public URL as example-dest and private URL as real-dest.com.   Added a section on URL rewriting to the Specification page, and added rewriting of URLs to exchange flows.</td>
   	  </tr>
    </tbody>
   </table>
