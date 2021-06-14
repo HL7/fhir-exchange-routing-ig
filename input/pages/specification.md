@@ -93,7 +93,7 @@ For example, in a search submitted to `http//dest12345.intermediary.com`  (using
 
 <p></p>
 
-#### Request routed through a single Inbound Gateway intermediary 
+#### Scenario: Request routed through a single Inbound Gateway intermediary 
 
 This scenario supports a situation where the destination delegates the responsibility of securing a public endpoint--and potentially performing other functions such as registering clients--to an intermediary. A single intermediary participates in this exchange, forwarding requests directly from the originator to the destination.
 
@@ -181,10 +181,9 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 </div>
 
 
+<p></p><hr><p></p>
 
-<p></p>
-
-#### Destination uses an Inbound Gateway Intermediary that in turn uses a Delegated Function Intermediary to deliver certain exchanges
+#### Scenario: Destination uses an Inbound Gateway Intermediary that in turn uses a Delegated Function Intermediary to deliver certain exchanges
 
 This scenario supports a situation where a second intermediary is used for delivery of a subset of requests addressed to the destination's public FHIR service address. 
 
@@ -272,7 +271,7 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-#### Originator initiates an asynchronous retrieval of data from a Destination that uses an Inbound Gateway Intermediary
+#### Scenario: Originator initiates an asynchronous retrieval of data from a Destination that uses an Inbound Gateway Intermediary
 
 In this scenario, the originator uses the [FHIR Asynchronous Pattern](https://www.hl7.org/fhir/async.html) to retrieve data from a destination that uses an Inbound Gateway intermediary as described above. 
 
@@ -356,7 +355,7 @@ The originator later retrieves the response data using the address previously re
 
 <p></p>
 
-#### Originator pushes data to a destination that uses an Inbound Gateway intermediary and obtains processing results asynchronously
+#### Scenario: Originator pushes data to a destination that uses an Inbound Gateway intermediary and obtains processing results asynchronously
 
 ***[Need to investigate how/whether this scenario is supported by the [FHIR asynchronous request pattern](https://www.hl7.org/fhir/async.html), which only describes an async GET interaction ]***
 
