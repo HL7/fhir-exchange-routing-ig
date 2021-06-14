@@ -144,7 +144,7 @@ The intermediary, which is holding a synchronous connection with the originator,
 
 - The originator receives the response
 
-*[Exchange flows and additional details](#scenario-destination-uses-an-inbound-gateway-intermediary-that-in-turn-uses-a-delegated-function-intermediary-to-deliver-certain-exchanges)*
+*[Exchange flows and additional details](specification.html#scenario-destination-uses-an-inbound-gateway-intermediary-that-in-turn-uses-a-delegated-function-intermediary-to-deliver-certain-exchanges)*
 
 <p></p>
 
@@ -172,7 +172,7 @@ Steps
 
 - The originator later retrieves the response data using the address previously returned in the `Content-Location` parameter of the initial response from the destination
 
-*[Exchange flows and additional details](#scenario-originator-initiates-an-asynchronous-retrieval-of-data-from-a-destination-that-uses-an-inbound-gateway-intermediary)*
+*[Exchange flows and additional details](specification.html#scenario-originator-initiates-an-asynchronous-retrieval-of-data-from-a-destination-that-uses-an-inbound-gateway-intermediary)*
 
 <p></p>
 
