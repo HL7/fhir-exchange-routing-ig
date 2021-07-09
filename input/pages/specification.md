@@ -14,7 +14,7 @@ For example, the Bundle.entry.fullUrl element for a resource accessible from the
 
 ### Options for constructing the destination's public FHIR service address
 
-Four models may be used to construct and use the destination's public FHIR service address. Three approaches result in a URL, and the third results in a URL that is accompanied by additional metadata to be conveyed in the HTTP header (in an X-Destination parameter).
+Three models may be used to construct and use the destination's public FHIR service address, which all result in a conventional FHIR service base URL.
 
 **1. Base URL that reflects the destination's identity,** such as <br/>`fhir.example-destination.com`
 
@@ -38,43 +38,7 @@ In this method, the destination's public FHIR service URL consists of:
 
 The intermediary bases routing on the path segment that indicates the destination.
 
-**4. Intermediary's base URL accompanied by routing metadata passed in an HTTP header parameter**, such as <br/>URL: `fhir.example-intermediary.com` 
-HTTP header parameter: `X-Destination: example-destination`
-
-In this method, the destination's public FHIR service address consists of: 
-
-- the Inbound Gateway Intermediary's base URL 
-- paired with metadata passed in the HTTP header's `X-Destination` parameter.
-
-The intermediary bases routing on the value passed in the `X-Destination` parameter.
-
-*Note: In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the X-Destination parameter value must somehow be captured alongside the service URL in FHIR elements (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element).*
-
-*This guide's preliminary approach is to represent the X-Destination in an extension on the element containing the service base URL.*
-
-**Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>`fhir.example-intermediary.com/?_x-destination=12345`
-
-\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
-
-***Note:** Discussion in the May 2021 HL7 FHIR Connectathon determined that this approach would create URL strings that do not conform with FHIR requirements.*
-
-\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
-
-In this method, the destination's public FHIR service address consists of: 
-
-- the Inbound Gateway Intermediary's base URL 
-- paired with metadata passed in a query string x-destination parameter appended to the FHIR request URL string. 
-
-The parameter is:
-
-- added to the end of the request URL if it does not otherwise contain a query string. For example, in a GET that requests a resource by its identifier, the x-destination is appended to the end of the request: `GET http://fhir.intermediary.com/Patient/P1?_x-destination=12345`
-- added as an additional parameter if the request already contains a query string. For example, in a search: 
-  `GET http://fhir.intermediary.com/Patient?family:exact=Cook&given=jennifer`
-  `&_x-destination=12345`
-
-The intermediary bases routing on the value passed in the `x-destination` parameter, and then strips it from the URL string before forwarding the request to the destination system.
-
-*Response content URL rewriting.* In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the intermediary rewrites full FHIR service URLs contained in FHIR resources returned by the destination (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element) to match the URL + x-destination query string to which the originator submitted the request.
+<p></p>
 
 ### Response Content URL Rewriting
 
@@ -103,8 +67,6 @@ Below is the main flow of this scenario.
 
 Before the exchange, the originator system obtains the destination's public FHIR service address, for example through a reference in a previously-received FHIR resource or by consulting an endpoint directory. 
 
-This address is conventionally a URL (the destination's FHIR service base URL). However, in one of the variations described below, the address consists of a URL paired with a value to be conveyed in the FHIR request's HTTP header (also see *Options for constructing the public FHIR service address, above*)
-
 **Step 2. Originator initiates a RESTful interaction using the destination's public FHIR service address**
 
 The originator system then initiates a RESTful exchange (for example, a GET method to retrieve a FHIR resource) that is transmitted to the destination's public FHIR service address. 
@@ -123,11 +85,17 @@ Because the destination's public URL resolves to a destination-specific location
 
 The destination processes the request and synchronously returns its response. 
 
-Note that any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--will match the public FHIR service address used by the originator.
+Note that any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--SHALL either:
+
+- be populated by the destination server to match the public FHIR service address used by the originator
+
+or
+
+- be adjusted by the intermediary in the following step to match the public FHIR service address used by the originator. See [Response Content URL Rewriting](#response-content-url-rewriting) above.
 
 **Step 6. The intermediary passes through the response to the originator**
 
-The intermediary, which is holding a synchronous connection with the originator, passes through the response. It does not modify the response in any way.
+The intermediary, which is holding a synchronous connection with the originator, passes through the response. Based on previous arrangement with the destination, it may rewrite references to the destination's FHIR service in resources returned by the destination.  See [Response Content URL Rewriting](#response-content-url-rewriting) above.
 
 **Step 7. The originator receives the response**
 
@@ -159,27 +127,7 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 </div>
 <p></p>
 
-***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
-
-<div><p>
-  <img src="uc-search-single-intermediary-int-url-header.png" style="float:none">  
-    </p>
-</div>
 <p></p>
-
-***[TO BE REMOVED] FHIR service address option - Intermediary's Base URL with routing metadata passed in a query string parameter***
-
-\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
-
-***Note:** Discussion in the May 2021 HL7 FHIR Connectathon determined that this approach would create URL strings that do not conform with FHIR requirements.*
-
-\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
-
-<div><p>
-  <img src="uc-search-single-intermediary-int-url-query.png" style="float:none">  
-    </p>
-</div>
-
 
 <p></p><hr><p></p>
 
@@ -215,15 +163,21 @@ Because the exchange was received at an endpoint specific to the *alternative de
 
 The destination processes the request and synchronously returns its response. 
 
-Note that any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--will match the public FHIR service address used by the originator.
+Note that any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--SHALL either:
+
+- be populated by the destination server to match the public FHIR service address used by the originator
+
+or
+
+- be adjusted by the intermediary in the following step to match the public FHIR service address used by the originator. See [Response Content URL Rewriting](#response-content-url-rewriting) above.
 
 **Step 7. The Delegated Function intermediary passes through the response to the Inbound Gateway intermediary**
 
-The intermediary, which is holding a synchronous connection with the originator, passes through the response. It does not modify the response in any way.
+The intermediary, which is holding a synchronous connection with the originator, passes through the response. Based on previous arrangement with the destination, it may rewrite references to the destination's FHIR service in resources returned by the destination.  See [Response Content URL Rewriting](#response-content-url-rewriting) above.
 
 **Step 8. The Inbound Gateway intermediary passes through the response to the originator**
 
-The intermediary, which is holding a synchronous connection with the originator, passes through the response. It does not modify the response in any way.
+The intermediary, which is holding a synchronous connection with the originator, passes through the response. It may rewrite references to the destination's FHIR service in resources returned by the destination.  See [Response Content URL Rewriting](#response-content-url-rewriting) above.
 
 **Step 9. The originator receives the response**
 
@@ -257,17 +211,9 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 </div>
 <p></p>
 
-***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
-
-<div><p>
-  <img src="uc-search-two-intermediaries-int-url-header.png" style="float:none">  
-    </p>
-</div>
-
-
 <p></p>
 
-### Asynchronous Scenarios
+### Asynchronous Scenario
 
 <p></p>
 
@@ -293,11 +239,17 @@ The `Prefer: respond-async` header is also forwarded to the destination.
 
 The destination responds with an HTTP status code of `202 Accepted`, and an HTTP header containing a `Content-Location` parameter that specifies the URL at which the response data will be available.
 
-It is expected that the `Content-Location` base will match the public FHIR service address used by the originator.
+The `Content-Location` base SHALL either be: 
+
+- populated by the destination to match the public FHIR service address used by the originator
+
+or
+
+- adjusted in the following step by the intermediary to match the public FHIR service address used by the originator.
 
 **Step 6. The intermediary passes through the response to the originator**
 
-The intermediary, which is holding a synchronous connection with the originator, passes through the response. It does not modify the response in any way.
+The intermediary, which is holding a synchronous connection with the originator, passes through the response. Based on previous arrangement with the destination, it may modify the `Content-Location` base to match the public FHIR service address used by the originator.
 
 **Step 7. The originator receives the response**
 
@@ -330,8 +282,6 @@ The originator later retrieves the response data using the address previously re
 </div>
 
 
-
-
 <p></p>
 
 ***FHIR service address option 3 - Intermediary's Base URL followed by a path indicating the destination***
@@ -340,35 +290,6 @@ The originator later retrieves the response data using the address previously re
   <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none">  
     </p>
 </div>
-
-
-
-<p></p>
-
-***FHIR service address option 4 - Intermediary's Base URL with routing metadata passed in an HTTP header parameter***
-
-<div><p>
-  <img src="uc-async-single-intermediary-int-url-header.png" style="float:none">  
-    </p>
-</div>
-
-
-<p></p>
-
-#### Scenario: Originator pushes data to a destination that uses an Inbound Gateway intermediary and obtains processing results asynchronously
-
-***[Need to investigate how/whether this scenario is supported by the [FHIR asynchronous request pattern](https://www.hl7.org/fhir/async.html), which only describes an async GET interaction ]***
-
-In this scenario, the originator uses the [FHIR Asynchronous Pattern](https://www.hl7.org/fhir/async.html) to push data to the destination and then later retrieve processing results asynchronously. The destination uses an Inbound Gateway intermediary as described above. 
-
-**Steps**
-
-This scenario is a variation on the previous "asynchronous data retrieval" scenario--differing only in that the initial exchange POSTs data to the destination for processing, rather than the previous scenarios use of a GET data request.
-
-**Exchange Flows**
-
-See flows for previous asynchronous scenario. Only difference is that the initial Originator exchange to the Destination is a POST of data.
-
 
 
 <br>

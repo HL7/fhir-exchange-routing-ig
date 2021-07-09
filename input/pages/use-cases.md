@@ -74,7 +74,6 @@ Scenarios are separated into two groups below:
   - Scenario: [Destination uses an Inbound Gateway intermediary that, in turn has a relationship with a Delegated Function intermediary to deliver certain exchanges](#destination-uses-an-inbound-gateway-intermediary-that-in-turn-uses-a-delegated-function-intermediary-to-deliver-certain-exchanges)
 - **asynchronous** exchanges that follow the [FHIR Asynchronous Request pattern](http://hl7.org/fhir/async.html), as used in the [Bulk Data Access IG](https://hl7.org/fhir/uv/bulkdata/index.html)
   - Scenario: [Originator initiates an asynchronous retrieval of data from a Destination that uses an Inbound Gateway Intermediary](#originator-initiates-an-asynchronous-retrieval-of-data-from-a-destination-that-uses-an-inbound-gateway-intermediary)
-  - Scenario: [Originator pushes data to a destination that uses an Inbound Gateway intermediary and obtains processing results asynchronously](#originator-pushes-data-to-a-destination-that-uses-an-inbound-gateway-intermediary-and-obtains-processing-results-asynchronously)
 
 <p></p>
 
@@ -148,7 +147,7 @@ The intermediary, which is holding a synchronous connection with the originator,
 
 <p></p>
 
-### Asynchronous Scenarios
+### Asynchronous Scenario
 
 #### Originator initiates an asynchronous retrieval of data from a Destination that uses an Inbound Gateway Intermediary
 
@@ -173,21 +172,5 @@ Steps
 - The originator later retrieves the response data using the address previously returned in the `Content-Location` parameter of the initial response from the destination
 
 *[Exchange flows and additional details](specification.html#scenario-originator-initiates-an-asynchronous-retrieval-of-data-from-a-destination-that-uses-an-inbound-gateway-intermediary)*
-
-<p></p>
-
-#### Originator pushes data to a destination that uses an Inbound Gateway intermediary and obtains processing results asynchronously
-
-***[Need to investigate how/whether this scenario is supported by the [FHIR asynchronous request pattern](https://www.hl7.org/fhir/async.html), which only describes an async GET interaction ]***
-
-In this scenario, the originator uses the [FHIR Asynchronous Pattern](https://www.hl7.org/fhir/async.html) to push data to the destination and then later retrieve processing results asynchronously. The destination uses an Inbound Gateway intermediary as described above. 
-
-**Steps**
-
-This scenario is a variation on the previous "asynchronous data retrieval" scenario--differing only in that the initial exchange POSTs data to the destination for processing, rather than the previous scenarios use of a GET data request.
-
-**Exchange Flows**
-
-See flows for previous asynchronous scenario. Only difference is that the initial Originator exchange to the Destination is a POST of data.
 
 <br/>

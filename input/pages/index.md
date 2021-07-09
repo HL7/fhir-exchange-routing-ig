@@ -28,7 +28,6 @@ The guide is organized into the following sections:
 
 - [Use Cases and Roles](use-cases.html) gives an overview of the guide's goals and participants.
 - [Specification](specification.html) describes the solution in detail.
-- ...
 
 <p></p>
 
@@ -79,13 +78,17 @@ The guide is organized into the following sections:
 		<td>June 12, 2021</td>
 		<td>Adjusted Specification page based on Connectathon feedback: added "intermediary subdomain" as another option for constructing the destination’s public FHIR service address and added a note to "Intermediary’s base URL accompanied by routing metadata passed in a query string parameter" stating that Connectathon discussion deterimined that the option results in invalid FHIR URLs in some cases.    Adjusted exchange flow diagrams to consistently refer to the intermediary's URL as example-int.com and the destination's public URL as example-dest and private URL as real-dest.com.   Added a section on URL rewriting to the Specification page, and added rewriting of URLs to exchange flows.</td>
   	  </tr>
+	  <tr>
+		<td>July 9, 2021</td>
+		<td>Focused the content on addressing options 1 (Base URL that reflects the destination's identity), 2 (Subdomain of intermediary's URL that identifies the destination) and 3 (Intermediary's base URL followed by a path indicating the destination) based on stakeholder feedback. On the Specifications page, removed options 4 (HTTP header parameter) and 5 (query string parameter). Removed the incomplete push scenario content from the Use Cases and Specifications pages. Clarified content in the scenario steps related to rewriting of URLs in content returned by the destination.</td>
+  	  </tr>
    </tbody>
   </table>
 
 
 
-<br />
 
+<br />
 
 
 
