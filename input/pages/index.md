@@ -14,7 +14,7 @@ This implementation guide defines conventions for certain FHIR exchanges that in
 The implementation guide focuses on exchanges where...
 
 - the originator directs the exchange to the destination's public FHIR service base URL, for example as retrieved from an endpoint directory
-- but the destination has an arrangement where an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system.
+- an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system.
 
 The guide aims to support all RESTful FHIR interaction types (GET, POST, etc.) within this set of scenarios.
 
