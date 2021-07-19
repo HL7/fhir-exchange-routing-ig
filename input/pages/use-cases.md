@@ -42,11 +42,12 @@ This page defines the roles that intermediaries play in the scenarios addressed 
     <tr>
       <td>Outbound  Gateway</td>
       <td>Originator</td>
-      <td>The  originator directs some or all of its requests to the intermediary, who  forwards them to the desired responders</td>
-      <td>Originator  delegates the work of maintaining connections for multiple endpoints (registration,  security credentials, etc.) to the intermediary.  Also enables  the intermediary to provide searching and business logic to identify a  responder that fits the originator’s criteria.  Often  connected to originator via an VPN.</td>
+      <td>The  originator directs some or all of its requests to the intermediary, who  forwards them to the desired responders. Specifically, the  originator directs each request to the same intermediary FHIR service base URL--with informational content in the payload--that the intermediary uses to determine and route to the appropriate recipient.</td>
+      <td>Originator  delegates to the intermediary the searching and business logic to identify a  responder that fits the originator’s criteria.  Often  connected to originator via an VPN.</td>
       <td>Used in  e-prescribing when the sender doesn’t know the specific receiving system  (prescription renewals, certain benefit requests).     Not common in  other environments</td>
     </tr>
-    <tr>
+      <tr style="background-color:yellow"><td colspan="5"><b><i>To be removed or reworded...</i></b></td></tr>
+    <tr  style="background-color:yellow">
       <td>Exchange  Network</td>
       <td>Both the Originator and the Destination</td>
       <td>The  intermediary provides a closed “hub and spoke” environment in which  participants exchange with each other through a single, common intermediary  connection</td>
@@ -55,6 +56,7 @@ This page defines the roles that intermediaries play in the scenarios addressed 
     </tr>
   </tbody>
 </table>
+
 
 <p></p>
 

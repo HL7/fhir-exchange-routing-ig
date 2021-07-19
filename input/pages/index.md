@@ -1,24 +1,45 @@
 ﻿### Overview
-As the need for integration between different actors in healthcare has grown, the aspect of transactions routings across one or more intermediaries such as clearinghouses, HIEs, national networks, and other exchanges is recognized. An example of this scenario is the situation in which a payer uses a clearinghouse intermediary as their 'gateway' for transactions. 
+As the range of healthcare actors using FHIR has grown, so has the need to route exchanges across intermediaries such as clearinghouses, HIEs, national networks, and others. An example of this scenario is the situation in which a payer uses a clearinghouse intermediary as their 'gateway' for receiving FHIR requests. 
 
-There are both technical and business operational value adds in this intermediary model. This model was born in the world of the original X12 transaction set and is expected to continue in the evolving RESTful FHIR API integration model. Other networks including HIEs and national networks have emerged as brokering intermediaries (document access/exchange, e-prescribing, etc.), that may also engage in FHIR based interoperability.
+Stakeholders use intermediaries for technical, operational and business reasons. The intermediary model was born in the world of the original X12 transaction set and is expected to continue as RESTful FHIR API integration evolves. Other networks, including HIEs and national networks, have emerged as brokering intermediaries for document access/exchange, e-prescribing and other purposes, and may also engage in FHIR-based interoperability.
 
-This implementation guide defines conventions for FHIR exchanges involving such intermediaries.
-
-<p></p>
-
-### Solution Features
-
-- Common pattern, used for many years in healthcare and other industries
-- Lightweight
-- Works even when doing GET or POST (i.e., searches or matches), so even if there is no FHIR resource being exchanged then routing information is still available
-- Universally usable, regardless of FHIR transaction – it’s resource agnostic
+This implementation guide defines conventions for certain FHIR exchanges that involve such intermediaries.
 
 <p></p>
 
 ### Scope of This Guide
 
+**In scope**
+
+The implementation guide focuses on exchanges where...
+
+- the originator directs the exchange to the destination's public FHIR service base URL, for example as retrieved from an endpoint directory
+- but the destination has an arrangement where an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system.
+
+
+
+The guide aims to support all RESTful FHIR interaction types (GET, POST, etc.) within this set of participants.
+
+- the originator directs its exchange to the intended destination's public FHIR service address
+- the originator is unaware that an intermediary will play a role in routing the request
+
 This implementation guide is intended be used in the United States.
+
+**Out of scope of this version of the guide**
+
+The guide does not currently address other intermediary exchange scenarios that exist today--though it may be expanded to cover those in the future. 
+
+In particular, the guide does not address scenarios where the originator provides information or identifiers within each exchange submitted to an intermediary's single FHIR service URL--and the intermediary takes responsibility for the searching or business logic to identify a destination that fits the submitted criteria.
+
+<p></p>
+
+### Solution Features
+
+- Common mechanisms used for many years in healthcare and other industries
+- Lightweight
+- Works when performing all REST interactions including GET (e.g., for a search or retrieval) ensuring that the intermediary routing can be accomplished even if no FHIR resource is being submitted
+- Universally usable, regardless of FHIR content--being resource-type agnostic
+- Requires no special handling by the originator; the submitting system is unaware that an intermediary will play a role in routing the request
 
 <p></p>
 
@@ -82,8 +103,13 @@ The guide is organized into the following sections:
 		<td>July 9, 2021</td>
 		<td>Focused the content on addressing options 1 (Base URL that reflects the destination's identity), 2 (Subdomain of intermediary's URL that identifies the destination) and 3 (Intermediary's base URL followed by a path indicating the destination) based on stakeholder feedback. On the Specifications page, removed options 4 (HTTP header parameter) and 5 (query string parameter). Removed the incomplete push scenario content from the Use Cases and Specifications pages. Clarified content in the scenario steps related to rewriting of URLs in content returned by the destination.</td>
   	  </tr>
+	  <tr>
+		<td>July 19, 2021</td>
+		<td>Added more description and specifics about the guide's scope to the index page. On the Use Cases page, clarified the first out of scope row, and highlighted the second out of scope row for discussion.</td>
+  	  </tr>
    </tbody>
   </table>
+
 
 
 
