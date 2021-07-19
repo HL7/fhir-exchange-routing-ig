@@ -54,6 +54,7 @@ When an intermediary receives an exception reported by another intermediary, it 
       <td><b>Attempt to connect to destination server timed out</b> (with no response)</td>
       <td>504 Gateway Timeout</td>
       <td>Indicates that a timeout occurred when trying to reach the destination server. Resource that the gateway was trying to connect to timed out</td>
+      </tr>
     <tr>
       <td><b>System error</b></td>
       <td>500 Internal Error</td>
@@ -84,3 +85,4 @@ When an intermediary receives an exception reported by another intermediary, it 
 <p></p>
 
 <br/>
+
