@@ -3,7 +3,7 @@ As the range of healthcare actors using FHIR has grown, so has the need to route
 
 Stakeholders use intermediaries for technical, operational and business reasons. The intermediary model was born in the world of the original X12 transaction set and is expected to continue as RESTful FHIR API integration evolves. Other networks, including HIEs and national networks, have emerged as brokering intermediaries for document access/exchange, e-prescribing and other purposes, and may also engage in FHIR-based interoperability.
 
-This implementation guide defines conventions for certain FHIR exchanges that involve such intermediaries.
+This implementation guide defines conventions for certain FHIR exchanges that involve such intermediaries. It establishes a basic foundation that will be enhanced and built on over time as stakeholders encounter additional needs.
 
 <p></p>
 
@@ -17,9 +17,6 @@ The implementation guide focuses on exchanges where...
 - an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system.
 
 The guide aims to support all RESTful FHIR interaction types (GET, POST, etc.) within this set of scenarios.
-
-- the originator directs its exchange to the intended destination's public FHIR service address
-- the originator is unaware that an intermediary will play a role in routing the request
 
 This implementation guide is intended be used in the United States.
 
@@ -109,6 +106,7 @@ The guide is organized into the following sections:
   	  </tr>
    </tbody>
   </table>
+
 
 
 
