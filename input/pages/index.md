@@ -105,7 +105,7 @@ The guide is organized into the following sections:
   	  </tr>
 	  <tr>
 		<td>July 19, 2021</td>
-		<td>Added more description and specifics about the guide's scope to the index page. On the Use Cases page, clarified the first out of scope row, and highlighted the second out of scope row for discussion.</td>
+		<td>Added more description and specifics about the guide's scope to the index page. On the Use Cases page, clarified the first out of scope row, and highlighted the second out of scope row for discussion. Adjusted Exception Handling page based on final solution approaches</td>
   	  </tr>
    </tbody>
   </table>
