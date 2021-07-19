@@ -16,14 +16,14 @@ The implementation guide focuses on exchanges where...
 - the originator directs the exchange to the destination's public FHIR service base URL, for example as retrieved from an endpoint directory
 - but the destination has an arrangement where an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system.
 
-
-
-The guide aims to support all RESTful FHIR interaction types (GET, POST, etc.) within this set of participants.
+The guide aims to support all RESTful FHIR interaction types (GET, POST, etc.) within this set of scenarios.
 
 - the originator directs its exchange to the intended destination's public FHIR service address
 - the originator is unaware that an intermediary will play a role in routing the request
 
 This implementation guide is intended be used in the United States.
+
+<p></p>
 
 **Out of scope of this version of the guide**
 
@@ -38,7 +38,7 @@ In particular, the guide does not address scenarios where the originator provide
 - Common mechanisms used for many years in healthcare and other industries
 - Lightweight
 - Works when performing all REST interactions including GET (e.g., for a search or retrieval) ensuring that the intermediary routing can be accomplished even if no FHIR resource is being submitted
-- Universally usable, regardless of FHIR content--being resource-type agnostic
+- Universally usable, regardless of FHIR content. Resource-type agnostic
 - Requires no special handling by the originator; the submitting system is unaware that an intermediary will play a role in routing the request
 
 <p></p>
