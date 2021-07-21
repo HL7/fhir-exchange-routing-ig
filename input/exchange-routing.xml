@@ -15,8 +15,8 @@
     <url value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing"/>
  	<version value="0.1.0"/> 
     <!-- <version value="current"/> -->
-    <name value="SpecialtyRx"/>
-    <title value="Hybrid/Intermediary Exchange"/>
+    <name value="Hybrid Intermediary Exchange"/>
+    <title value="Hybrid Intermediary Exchange"/>
     <status value="draft"/>
      <publisher value="HL7 International - FHIR Infrastructure" />
     <contact>
@@ -45,30 +45,14 @@
     <fhirVersion value="4.0.1"/>
     <definition>
 <!-- ************************************************************* Resources ************************************************************ -->
-
-<!--	  
-	
-	No resources have been defined yet for this guide. In order for publishing to complete, I've added the dummy code system below
-
--->
-
   	  <resource>
 	    <reference>
-	      <reference value="CodeSystem/exchange-routing-temp"/>
-	      <display value="Exchange Routing CodeSystem - Temp"/>
+	      <reference value="CapabilityStatement/exchange-routing-intermediary"/>
+	      <display value="Exchange Routing CapabilityStatement - Intermediary"/>
 	    </reference>
-	    <name value="Exchange Routing CodeSystem - Temp"/>
+	    <name value="ExchangeRoutingIntermediaryCapabilityStatement"/>
 	    <exampleBoolean value="false"/>
 	  </resource>	  
-	  <resource>
-	      <reference>
-	        <reference value="Bundle/exchange-routing-bundle-1"/>
-                <display value="Exchange Routing Bundle 1"/>
-            </reference>
-            <name value="Exchange Routing Bundle 1"/>
-            <description value="Example of a Bundle to test exchange routing concepts."/>
-		    <exampleBoolean value="true"/>
-      </resource>	  
 
 <!-- ************************************************************* Pages ************************************************************ -->
       <page>

@@ -6,7 +6,7 @@ After an originating system initiates an exchange, an exception could occur...
 
 - at an intermediary that is helping route the exchange.
 
-This section describes a base set of conventions for reporting these exceptions. The *[FAST Scaling IG, not yet available]* describes exception scenarios and handling in greater depth.
+This section describes a base set of conventions for reporting these exceptions. 
 
 <p></p>
 

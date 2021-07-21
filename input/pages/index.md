@@ -104,6 +104,10 @@ The guide is organized into the following sections:
 		<td>July 19, 2021</td>
 		<td>Added more description and specifics about the guide's scope to the index page. On the Use Cases page, clarified the first out of scope row, and highlighted the second out of scope row for discussion. Adjusted Exception Handling page based on final solution approaches</td>
   	  </tr>
+	  <tr>
+		<td>July 21, 2021</td>
+		<td>In Specification, added the need to also rewrite HTTP header parameter values containing the destination's base service address. Removed errant reference to a future FAST Scaling IG in the exception handling page. Added CapabilityStatement for an intermediary. Removed placeholder FHIR resources.</td>
+  	  </tr>
    </tbody>
   </table>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="exchange-routing-intermediary" />
+  <url value="http://hl7.org/fhir/us/exchange-routing/CapabilityStatement/exchange-routing-intermediary" />
+  <version value="0.1.0" />
+  <name value="ExchangeRoutingIntermediaryCapabilityStatement" />
+  <title value="Exchange Routing Intermediary Capability Statement" />
+  <status value="active" />
+  <experimental value="false" />
+  <date value="2021-07-20T00:00:00-05:00" />
+  <publisher value="HL7 International - FHIR Infrastructure" />
+  <description value="This CapabilityStatement describes the expected capabilities of an intermediary that conforms to the conventions of the FHIR Exchange Routing implementation guide." />
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166" />
+      <code value="US" />
+      <display value="United States of America" />
+    </coding>
+  </jurisdiction>
+  <kind value="requirements" />
+  <fhirVersion value="4.0.1" />
+  <format value="xml" />
+  <format value="json" />
+  <patchFormat value="application/json-patch+json" />
+  <implementationGuide value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing" />
+  <rest>
+    <mode value="server" />
+    <documentation value="When performing the role of Inbound Gateway, the intermediary **SHALL**: 1. Ensure that references to the destination FHIR server contained in FHIR resources returned by the destination (e.g., in the Bundle.entry.fullUrl element) are consistent with the the FHIR service base address specified by the originator in the request. The way the intermediary meets this requirement depends on its arrangement with the destination, where either (a) the destination populates these references to match the FHIR service address specified by the originator in the request, and the intermediary passes the resource through to the originator unchanged, or (b) the intermediary rewrites these references before returning them to the originator. 1. Implement RESTful behavior according to the FHIR specification. 1. Support the JSON source format. &#xA;When performing the role of Inbound Gateway or Delegated Function Intermediary, the intermediary **SHOULD**: 1. Support the XML source format." />
+    <security>
+      <description value="1. For general security considerations refer to [FHIR Security and Privacy Considerations](https://www.hl7.org/fhir/secpriv-module.html). &#xA;1. For additional security guidance, refer to the [core FHIR Security guidance page](https://www.hl7.org/fhir/security.html)." />
+    </security>
+  </rest>
+</CapabilityStatement>

@@ -42,7 +42,7 @@ The intermediary bases routing on the path segment that indicates the destinatio
 
 ### Response Content URL Rewriting
 
-In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the intermediary may need to rewrite full FHIR service URLs contained in FHIR resources returned by the destination (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element) to match the URL to which the originator submitted the request.
+In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the intermediary may need to rewrite full FHIR service URLs contained in FHIR resources returned by the destination (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element) and in HTTP header parameters (e.g., `Content-Location`) to match the URL to which the originator submitted the request.
 
 For example, in a search submitted to `http//dest12345.intermediary.com`  (using option 2 above, *Subdomain of intermediary's URL that reflects the destination's identity*):
 
@@ -50,6 +50,16 @@ For example, in a search submitted to `http//dest12345.intermediary.com`  (using
   `http://fhir.destination.com/Patient/1`
 - the intermediary rewrites the fullUrl value to
   `http://dest12345.intermediary.com/Patient/P1`
+
+The destination and intermediary are expected to establish in advance the situations in which  base service addresses are either: 
+
+- populated by the destination to match the public FHIR service address used by the originator
+
+  or
+
+- adjusted in the following step by the intermediary to match the public FHIR service address used by the originator.
+
+But in either case, references to the destination's base service address that are returned to the originator SHALL always match the public FHIR service base address submitted on the request.
 
 <p></p>
 
