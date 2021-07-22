@@ -15,8 +15,8 @@
     <url value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing"/>
  	<version value="0.1.0"/> 
     <!-- <version value="current"/> -->
-    <name value="Hybrid Intermediary Exchange"/>
-    <title value="Hybrid Intermediary Exchange"/>
+    <name value="HybridIntermediaryExchange"/>
+    <title value="Hybrid / Intermediary Exchange"/>
     <status value="draft"/>
      <publisher value="HL7 International - FHIR Infrastructure" />
     <contact>
@@ -50,7 +50,7 @@
 	      <reference value="CapabilityStatement/exchange-routing-intermediary"/>
 	      <display value="Exchange Routing CapabilityStatement - Intermediary"/>
 	    </reference>
-	    <name value="ExchangeRoutingIntermediaryCapabilityStatement"/>
+	    <name value="Exchange Routing CapabilityStatement - Intermediary"/>
 	    <exampleBoolean value="false"/>
 	  </resource>	  
 
