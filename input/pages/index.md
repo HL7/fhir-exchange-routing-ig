@@ -72,6 +72,49 @@ The guide is organized into the following sections:
 
 <p></p>
 
+### Change Log
+
+  <table class="grid">
+    <tbody>
+	  <tr>
+		<td>Date</td>
+		<td>Change</td>
+  	  </tr>
+	  <tr>
+		<td>Mar 1, 2021</td>
+		<td>Skeleton draft</td>
+  	  </tr>
+	  <tr>
+		<td>April 12-23, 2021</td>
+		<td>Expanded Use Cases and Roles and Specification pages to reflect current group discussion. Added draft Exception Handling page</td>
+  	  </tr>
+	  <tr>
+		<td>May 17, 2021</td>
+		<td>Added draft material to the Specification page describing a fourth addressing approach that passes routing information in a query string parameter</td>
+  	  </tr>
+	  <tr>
+		<td>June 12, 2021</td>
+		<td>Adjusted Specification page based on Connectathon feedback: added "intermediary subdomain" as another option for constructing the destination’s public FHIR service address and added a note to "Intermediary’s base URL accompanied by routing metadata passed in a query string parameter" stating that Connectathon discussion deterimined that the option results in invalid FHIR URLs in some cases.    Adjusted exchange flow diagrams to consistently refer to the intermediary's URL as example-int.com and the destination's public URL as example-dest and private URL as real-dest.com.   Added a section on URL rewriting to the Specification page, and added rewriting of URLs to exchange flows.</td>
+  	  </tr>
+	  <tr>
+		<td>July 9, 2021</td>
+		<td>Focused the content on addressing options 1 (Base URL that reflects the destination's identity), 2 (Subdomain of intermediary's URL that identifies the destination) and 3 (Intermediary's base URL followed by a path indicating the destination) based on stakeholder feedback. On the Specifications page, removed options 4 (HTTP header parameter) and 5 (query string parameter). Removed the incomplete push scenario content from the Use Cases and Specifications pages. Clarified content in the scenario steps related to rewriting of URLs in content returned by the destination.</td>
+  	  </tr>
+	  <tr>
+		<td>July 19, 2021</td>
+		<td>Added more description and specifics about the guide's scope to the index page. On the Use Cases page, clarified the first out of scope row, and highlighted the second out of scope row for discussion. Adjusted Exception Handling page based on final solution approaches</td>
+  	  </tr>
+	  <tr>
+		<td>July 21, 2021</td>
+		<td>In Specification, added the need to also rewrite HTTP header parameter values containing the destination's base service address. Removed errant reference to a future FAST Scaling IG in the exception handling page. Added CapabilityStatement for an intermediary. Removed placeholder FHIR resources.</td>
+  	  </tr>
+	  <tr>
+		<td>July 26, 2021</td>
+		<td>In Specification, corrected sequence diagrams that referred to an X-Destination header that was previously removed from the IG's approaches.</td>
+  	  </tr>
+   </tbody>
+  </table>
+
 <br />
 
 
