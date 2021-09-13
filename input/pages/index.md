@@ -24,9 +24,7 @@ This implementation guide is intended be used in the United States.
 
 **Out of scope of this version of the guide**
 
-The guide does not currently address other intermediary exchange scenarios that exist today--though it may be expanded to cover those in the future. 
-
-In particular, the guide does not address scenarios where the originator provides information or identifiers within each exchange submitted to an intermediary's single FHIR service URL--and the intermediary takes responsibility for the searching or business logic to identify a destination that fits the submitted criteria.
+The guide may not address all intermediary exchange scenarios that exist today. It may be expanded to cover those in the future. 
 
 <p></p>
 
@@ -112,8 +110,13 @@ The guide is organized into the following sections:
 		<td>July 26, 2021</td>
 		<td>In Specification, corrected sequence diagrams that referred to an X-Destination header that was previously removed from the IG's approaches.</td>
   	  </tr>
+	  <tr>
+		<td>September 10, 2021</td>
+		<td>Adjustments based on public discussions during the week of Sep. 6. <br><br>Specification page: Modified all diagrams and sections according to current discussion. Reintroduced the HTTP Header approach sections and diagrams previously removed from the IG. Removed app path approach from intermediary-to-intermediary routing. Clarified construction of the public URL (addressing to the Inbound Gateway) vs. addressing between intermediaries. Added discussion notes. <br><br>Use Cases page: Adjustments to intermediary roles table and links to the Specification page. <br><br>Index page: adjusted scope section.</td>
+  	  </tr>
    </tbody>
   </table>
+
 
 <br />
 
