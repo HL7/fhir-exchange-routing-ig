@@ -1,7 +1,7 @@
 This guide supports scenarios where intermediaries take part in RESTful FHIR exchanges between an initiating system (the "originator") and the desired endpoint system (the "destination").  It focuses on scenarios where:
 
 - the originator directs the exchange to the destination's public FHIR service base URL, for example as retrieved from an endpoint directory
-- but the destination has an arrangement where an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system.
+- but the destination has an arrangement where an intermediary accepts the request on the destination's behalf and then routes it to the destination's system -- either directly or through another intermediary.
 
 This page defines the roles that intermediaries play in the scenarios addressed in this guide and then describes those scenarios more fully.
 
@@ -22,18 +22,19 @@ This page defines the roles that intermediaries play in the scenarios addressed 
     </tr>
     <tr>
       <td>Inbound  Gateway</td>
-      <td>This intermediary role receives all requests to the destination and  forwards them to the destination system or another intermediary</td>
+      <td>This intermediary role receives requests intended for the destination and  forwards them to the destination system or another intermediary</td>
       <td>The Inbound Gateway assumes the responsibility of securing a public endpoint and potentially performing other work (registering clients, etc.) on behalf of the destination</td>
-      <td>DNS entries are used to “point” the destination’s public URL to this intermediary. Common intermediary role for financial and administrative data exchange</td>
+      <td>Public DNS entries are used to “point” the destination’s public URL to this intermediary. Common intermediary role for financial and administrative data exchange</td>
     </tr>
     <tr>
       <td>Delegated  Intermediary</td>
       <td>This intermediary role assists in routing from a different intermediary to the destination system</td>
-      <td>This intermediary may act as a public hub to which the destination system is connected</td>
-      <td>Intermediaries may share non-public routing information to support delivery to the ultimate receiver</td>
+      <td>This intermediary may serve as a public network or hub to which the destination system is connected</td>
+      <td>Intermediaries may share non-public routing information to support delivery to the ultimate destination</td>
     </tr>
   </tbody>
 </table>
+
 
 
 
@@ -46,8 +47,9 @@ While there are many potential exchange scenarios in which an intermediary could
 
 - the exchange is a RESTful FHIR interaction
 - the originator directs its exchange to the intended destination's public FHIR service address
-- the originator is unaware that an intermediary will play a role in routing the request, and
-- the intermediary plays either the **Inbound Gateway** or **Delegated Function Intermediary** roles described above.
+- the originator may be unaware that an intermediary will play a role in routing the request, and has no additional responsibilities beyond those in a typical point-to-point FHIR exchange, and
+- an intermediary plays the **Inbound Gateway** role described above, accepting requests from the originator
+- one or more additional intermediaries optionally play the **Delegated Function Intermediary** role described above, assisting in routing to the destination.
 
 Scenarios are separated into two groups below:
 
@@ -61,11 +63,21 @@ Scenarios are separated into two groups below:
 
 ### Excluded scenarios 
 
-This guide does not provide guidance for: 
+This guide does not provide guidance for the use of [FHIR Messaging](https://www.hl7.org/fhir/messaging.html), which also includes routing features that can be used to exchange message content through intermediaries.
 
-- situations where the originator arranges to address some or all of its requests to an intermediary--who, in turn, uses logic, provided metadata or other means to determine and route to an appropriate destination
+<p></p>
 
-- use of FHIR Messaging, which also includes routing features that can be used to exchange message content through intermediaries.
+### Assumptions and Setup Steps
+
+This guide assumes that the destination and intermediary participants have established business arrangements and performed the following configuration steps prior to processing requests:
+
+- The destination arranges for an Inbound Gateway intermediary to accept FHIR requests on its behalf
+- The destination and Inbound Gateway intermediary establish the destination's public FHIR service base URL. The parties determine the structure of the URL to meet their preferences and technical requirements. For example, the URL's hostname may refer to either the destination or the intermediary and path segments may be included to identify the destination, specify the supported FHIR version, etc.
+  - This guide does not prescribe a particular URL structure to be used; it can be any valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) that originators can use without knowledge of its individual components--as they do any other FHIR service URL
+- The destination configures DNS entries for its public FHIR service base URL so that requests resolve to the Inbound Gateway intermediary
+- The destination shares its private server address with the Inbound Gateway intermediary, and the intermediary configures its internal routing mechanisms to enable it to forward requests received at the destination's public FHIR service base URL to either the destination system or another participating intermediary
+  - This guide does not prescribe particular routing logic or technical approaches to be used by the intermediary
+- (Optional) One or more public endpoint directories are configured to support searching for the destination and return of the destination's public FHIR service URL 
 
 <p></p>
 
@@ -77,20 +89,12 @@ This guide does not provide guidance for:
 
 This scenario supports a situation where the destination delegates the responsibility of securing a public endpoint--and potentially performing other functions such as registering clients--to an intermediary. A single intermediary participates in this exchange, forwarding requests directly from the originator to the destination. The destination processes the request and synchronously returns its response.
 
-Steps
-
-- Originator obtains the destination's public FHIR service address
-
-- Originator initiates a RESTful interaction using the destination's public FHIR service address
-
+- The originator obtains the destination's public FHIR service base URL, for example from a FHIR endpoint directory
+- The originator initiates a RESTful interaction using the destination's public FHIR service base URL
 - The exchange is received by the Inbound Gateway intermediary
-
 - The intermediary routes the exchange to the destination
-
-- The destination processes the request and returns its response to the intermediary. References to the destination's FHIR service in returned resources match the public FHIR service address used by the originator
-
+- The destination processes the request and returns its response to the intermediary, first [rewriting certain resource URLs](specification.html#response-content-url-rewriting) if needed 
 - The intermediary passes through the response to the originator
-
 - The originator receives the response
 
 *[Exchange flows and additional details](specification.html#scenario-request-routed-through-a-single-inbound-gateway-intermediary)*
@@ -115,9 +119,9 @@ Steps
 
 - The destination processes the request and returns its response to the last intermediary
 
-- The delegated intermediary passes through the response to the Inbound Gateway intermediary
+- The delegated intermediary passes through the response to the Inbound Gateway intermediary, first [rewriting certain resource URLs](specification.html#response-content-url-rewriting) if needed
 
-- The Inbound Gateway intermediary, which is holding a synchronous connection with the originator, passes through the response
+- The Inbound Gateway intermediary, which is holding a synchronous connection with the originator, passes through the response, first [rewriting certain resource URLs](specification.html#response-content-url-rewriting) if needed
 
 - The originator receives the response
 

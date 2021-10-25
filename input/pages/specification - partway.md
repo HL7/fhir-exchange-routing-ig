@@ -8,9 +8,9 @@ This guide assumes that the destination and intermediary participants have estab
 
 - The Inbound Gateway intermediary SHALL agree to accept FHIR requests on the destination's behalf
 - One or more additional delegated intermediaries MAY optionally agree to participate in the routing of requests between the Inbound Gateway intermediary and the destination
-- The destination and Inbound Gateway intermediary establish the destination's [public FHIR service base URL](#destinations-public-fhir-service-base-url) according to their needs
+- The destination and Inbound Gateway intermediary establish the destination's [public FHIR service base URL](public-fhir-service-url-of-the-destination) according to their needs
 - The destination SHALL configure DNS entries for its public FHIR service base URL so that requests resolve to the Inbound Gateway intermediary
-- Each participating intermediary SHALL configure its internal routing mechanisms to enable forwarding of requests to either the destination system or another participating intermediary, as prearranged among the parties. Note: This guide does not prescribe particular routing logic or technical approaches to be used by an intermediary
+- Each participating intermediary SHALL configure its internal routing mechanisms to enable forwarding of requests received at the destination's public FHIR service base URL to either the destination system or another participating intermediary, as prearranged among the parties. Note: This guide does not prescribe particular routing logic or technical approaches to be used by an intermediary
 - One or more public endpoint directories MAY be configured to support searching for the destination and return of the destination's public FHIR service URL 
 
 <p></p>
@@ -30,13 +30,13 @@ Feedback requested: Is it helpful to include the following example approaches? O
 
 Example approaches:
 
-- *Intermediary's base URL followed by a path indicating the destination,* such as `fhir.example-intermediary.com/example-destination`. In this method, the destination's public FHIR service URL consists of a base URL reflecting the Inbound Gateway Intermediary's identity followed by a path segment following the base that reflects the destination's identity. The intermediary may then base routing on the path segment that indicates the destination.
-- *Base URL that reflects the destination's identity,* such as`fhir.example-destination.com`. In this method, the destination uses a public FHIR service base URL that reflects its own identity and, in turn, hides participation of the Inbound Gateway Intermediary it employs. The intermediary bases routing on the network IP address at which it receives the request (the IP to which the public URL's DNS record is mapped).
-- *Subdomain of intermediary's URL that identifies the destination,* such as `example-destination.example-intermediary.com`. In this method, the destination is represented using a subdomain of the Inbound Gateway Intermediary's URL. The intermediary bases routing on the network IP address to which the subdomain's DNS record is mapped.
+- Intermediary's base URL followed by a path indicating the destination, such as `fhir.example-intermediary.com/example-destination`. In this method, the destination's public FHIR service URL consists of a base URL reflecting the Inbound Gateway Intermediary's identity followed by a path segment following the base that reflects the destination's identity. The intermediary may then base routing on the path segment that indicates the destination.
+- Base URL that reflects the destination's identity,** such as`fhir.example-destination.com`. In this method, the destination uses a public FHIR service base URL that reflects its own identity and, in turn, hides participation of the Inbound Gateway Intermediary it employs. The intermediary bases routing on the network IP address at which it receives the request (the IP to which the public URL's DNS record is mapped).
+- Subdomain of intermediary's URL that identifies the destination, such as `example-destination.example-intermediary.com`. In this method, the destination is represented using a subdomain of the Inbound Gateway Intermediary's URL. The intermediary bases routing on the network IP address to which the subdomain's DNS record is mapped.
 
 This guide does not prescribe a particular URL structure to be used; however, it SHALL be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) that originators can use without knowledge of its individual components--as they do any other FHIR service URL
 
-#### Private FHIR service base URLs used in routing between intermediaries and to the actual destination server
+#### FHIR service base URLs used in routing between intermediaries and to the actual destination server
 
 The destination and each delegated intermediary (participating in exchange hops following the Inbound Gateway intermediary) SHALL define its own URL at which it accepts requests intended for the destination.  Each party is free to determine the appropriate structure of the URL to meet its preferences and technical requirements, as described in the preceding section.
 
@@ -45,13 +45,7 @@ This guide does not prescribe a particular URL structure to be used; however, it
 - be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) 
 - be a unique URL associated only with the destination.
 
-#### Sharing of private URLs among the destination and partner intermediaries
-
-Private URLs are shared between participating parties as needed to facilitate routing during the exchange. This guide does not assume that a participant will be aware of the URLs used by all "hops" in the exchange, but only its own URL and that of the next participant to which it forwards a request.
-
-<p></p>
-
-### References to the service base URL in returned FHIR resources
+#### References to the service base URL in returned FHIR resources
 
 References to the destination's FHIR service in resources returned by the destination SHALL be consistent with the destination's single public FHIR service base address.  
 
@@ -64,6 +58,60 @@ Those references SHALL either be:
 - rewritten by an intermediary while returning the destination's response to match the public service base URL. See [Response Content URL Rewriting](#response-content-url-rewriting) below.
 
 <p></p>
+
+### Options for routing between intermediaries
+
+Three models may be used to construct and use the destination's public FHIR service address, which all result in a conventional FHIR service base URL.
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+***Review note: Stakeholders are currently evaluating which options below to include in the final IG***
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+<p></p>
+
+**1. HTTP header option: Intermediary's base URL accompanied by routing metadata passed in HTTP header parameters**, such as <br/>URL: `fhir.example-intermediary.com` 
+HTTP header parameter: `X-Destination: example-destination`
+HTTP header parameter: `X-Originator: example-originator`
+
+In this method, the destination's public FHIR service address consists of: 
+
+- the Inbound Gateway Intermediary's base URL 
+- paired with metadata passed in the HTTP header's `X-Destination` parameter.
+
+The intermediary bases routing on the value passed header parameters.
+
+*Notes:*
+
+- *In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the HTTP routing metadata header parameters SHALL NOT be returned in the response ultimately received by the originator.*
+- ***To Do: Use of the X-Originator parameter has not yet been fully defined***
+
+<p></p>
+
+**2. Intermediary's base URL accompanied by routing metadata passed in a query string parameter**, such as <br/>`fhir.example-intermediary.com/?_x-destination=12345`
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+***Note: Discussion in the May 2021 HL7 FHIR Connectathon determined that this approach would create URL strings that do not conform with FHIR requirements.***
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+In this method, the destination's public FHIR service address consists of: 
+
+- the Inbound Gateway Intermediary's base URL 
+- paired with metadata passed in a query string x-destination parameter appended to the FHIR request URL string. 
+
+The parameter is:
+
+- added to the end of the request URL if it does not otherwise contain a query string. For example, in a GET that requests a resource by its identifier, the x-destination is appended to the end of the request: `GET http://fhir.intermediary.com/Patient/P1?_x-destination=12345`
+- added as an additional parameter if the request already contains a query string. For example, in a search: 
+  `GET http://fhir.intermediary.com/Patient?family:exact=Cook&given=jennifer`
+  `&_x-destination=12345`
+
+The intermediary bases routing on the value passed in the `x-destination` parameter, and then strips it from the URL string before forwarding the request to the destination system.
+
+*Response content URL rewriting.* In order to fulfill this guide's requirement that references to the destination's base service address match its public FHIR service base address, the intermediary rewrites full FHIR service URLs contained in FHIR resources returned by the destination (e.g., in an `.endpoint` or `Bundle.entry.fullURL` element) to match the URL + x-destination query string to which the originator submitted the request.
 
 <p></p>
 
@@ -140,14 +188,23 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-**Exchange flow**
+***FHIR service address option 1 - Base URL reflects the destination's identity***
 
-<blockquote class="stu-note">
-<p>
-Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?</p>
-</blockquote>
+<div><p>
+  <img src="uc-search-single-intermediary-dest-url.png" style="float:none; width:1000px">  
+    </p>
+</div>
+<p></p>
 
-***Example - Intermediary's Base URL followed by a path indicating the destination***
+***FHIR service address option 2 - Subdomain of intermediary's URL identifies the destination***
+
+<div><p>
+  <img src="uc-search-single-intermediary-subdomain.png" style="float:none; width:1000px">  
+    </p>
+</div>
+<p></p>
+
+***FHIR service address option 3 - Intermediary's Base URL followed by a path indicating the destination***
 
 <div><p>
   <img src="uc-search-single-intermediary-int-url-plus-segment.png" style="float:none; width:1000px">  
@@ -207,30 +264,28 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
+**Exchange Flows**
 
-
-<blockquote class="stu-note">
-<p>
-Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?</p>
-</blockquote>
-
-**Exchange Flow**
-
-***Example - Intermediary's Base URL followed by a path indicating the destination***
+***Intermediary routing option 1 - Intermediary's Base URL with routing metadata passed in HTTP header parameters***
 
 <div><p>
-  <img src="uc-search-two-intermediaries-int-url-plus-segment.png" style="float:none">  
+  <img src="uc-search-two-intermediaries-int-url-header.png" style="float:none; width:1000px">  
+    </p>
+</div>
+
+***Intermediary routing option 2 - Intermediary's Base URL with routing metadata passed in a query string parameter***
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+***Note:** Discussion in the May 2021 HL7 FHIR Connectathon determined that this approach might create URL strings that do not conform with FHIR requirements.*
+
+\* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* \* 
+
+<div><p>
+  <img src="uc-search-two-intermediaries-query-string.png" style="float:none; width:1000px">  
     </p>
 </div>
 <p></p>
-
-
-
-
-
-
-
-<p></p><hr><p></p>
 
 ### Asynchronous Scenario
 
@@ -280,18 +335,35 @@ The originator later retrieves the response data using the address previously re
 
 <p></p>
 
-<blockquote class="stu-note">
-<p>
-Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or would it be better to include just one--given that the guide does not prescribe a particular URL structure?</p>
-</blockquote>
+**Exchange Flows**
 
-**Exchange Flow**
-
-***Example - Intermediary's Base URL followed by a path indicating the destination***
+***FHIR service address option 1 - Base URL reflects the destination's identity***
 
 <div><p>
-  <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none">  
+  <img src="uc-async-single-intermediary-dest-url.png" style="float:none; width:1000px">  
     </p>
 </div>
+
+
+
+ <p></p>
+
+***FHIR service address option 2 - Subdomain of intermediary's URL identifies the destination***
+
+<div><p>
+  <img src="uc-async-single-intermediary-subdomain.png" style="float:none; width:1000px">  
+    </p>
+</div>
+
+
+<p></p>
+
+***FHIR service address option 3 - Intermediary's Base URL followed by a path indicating the destination***
+
+<div><p>
+  <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none; width:1000px">  
+    </p>
+</div>
+
 
 <br>

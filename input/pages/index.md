@@ -1,4 +1,18 @@
-﻿### Overview
+﻿<blockquote class="stu-note">
+<p>
+This specification is a proposed Standard for Trial Use. It is expected to continue to evolve and improve through connectathon testing and feedback from early adopters. 
+</p>
+<p>
+Feedback is welcome and may be submitted through the <a href="https://chat.fhir.org/#narrow/stream/264775-FHIR-at.20Scale.20.28FAST.29.3A.20Exchange.20with.2Fwithout.20intermediaries">FHIR at Scale (FAST): Exchange with/without intermediaries Zulip stream</a>.
+</p>
+</blockquote>
+
+
+
+<p></p>
+
+### Overview
+
 As the range of healthcare actors using FHIR has grown, so has the need to route exchanges across intermediaries such as clearinghouses, HIEs, national networks, and others. An example of this scenario is the situation in which a payer uses a clearinghouse intermediary as their 'gateway' for receiving FHIR requests. 
 
 Stakeholders use intermediaries for technical, operational and business reasons. The intermediary model was born in the world of the original X12 transaction set and is expected to continue as RESTful FHIR API integration evolves. Other networks, including HIEs and national networks, have emerged as brokering intermediaries for document access/exchange, e-prescribing and other purposes, and may also engage in FHIR-based interoperability.
@@ -114,8 +128,14 @@ The guide is organized into the following sections:
 		<td>September 10, 2021</td>
 		<td>Adjustments based on public discussions during the week of Sep. 6. <br><br>Specification page: Modified all diagrams and sections according to current discussion. Reintroduced the HTTP Header approach sections and diagrams previously removed from the IG. Removed app path approach from intermediary-to-intermediary routing. Clarified construction of the public URL (addressing to the Inbound Gateway) vs. addressing between intermediaries. Added discussion notes. <br><br>Use Cases page: Adjustments to intermediary roles table and links to the Specification page. <br><br>Index page: adjusted scope section.</td>
   	  </tr>
+	  <tr>
+		<td>October 23, 2021</td>
+		<td>Adjustments based on public discussions during the week of Oct. 18. <br><br>Specification page: Added section, Assumptions: Partnership and setup between the originator and intermediaries. Added content to the section, Public FHIR service URL of the destination, indicating that the guide does not prescribe a particular URL structure. Added section, Private FHIR service base URLs used in routing between intermediaries and to the actual destination server. Added section, Sharing of private URLs among the destination and partner intermediaries. Removed HTTP header and querystring flows and replaced with URL-based options
+ <br><br>Index page: added STU note. <br><br>Use Cases and Roles page: Removed a scenario from the Excluded Scenarios bullet a statement. Added an Assumptions and Setup Steps section. Added links within the scenario overviews to URL rewriting section in the Specification page</td>
+  	  </tr>
    </tbody>
   </table>
+
 
 
 <br />
