@@ -53,7 +53,7 @@ Private URLs are shared between participating parties as needed to facilitate ro
 
 ### References to the service base URL in returned FHIR resources
 
-References to the destination's FHIR service in resources returned by the destination SHALL be consistent with the destination's single public FHIR service base address.  
+References to the destination's FHIR service in resources returned to the originating system SHALL be consistent with the destination's single public FHIR service base address.  
 
 For example, the Bundle.entry.fullUrl element for a resource accessible from the destination SHALL contain the same FHIR service base address as the destination would publish in a public endpoint directory.  
 
