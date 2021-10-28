@@ -9,7 +9,7 @@ This guide assumes that the destination and intermediary participants have estab
 - The Inbound Gateway intermediary SHALL agree to accept FHIR requests on the destination's behalf
 - One or more additional delegated intermediaries MAY optionally agree to participate in the routing of requests between the Inbound Gateway intermediary and the destination
 - The destination and Inbound Gateway intermediary establish the destination's [public FHIR service base URL](#destinations-public-fhir-service-base-url) according to their needs
-- The destination SHALL configure DNS entries for its public FHIR service base URL so that requests resolve to the Inbound Gateway intermediary
+- If the hostname in the destination's public FHIR service base URL is maintained by the destination organization, the destination SHALL configure DNS entries for its public FHIR service base URL so that requests resolve to the Inbound Gateway intermediary
 - Each participating intermediary SHALL configure its internal routing mechanisms to enable forwarding of requests to either the destination system or another participating intermediary, as prearranged among the parties. Note: This guide does not prescribe particular routing logic or technical approaches to be used by an intermediary
 - One or more public endpoint directories MAY be configured to support searching for the destination and return of the destination's public FHIR service URL 
 
@@ -144,7 +144,14 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <blockquote class="note-to-balloters">
 <p>
-Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?</p>
+    Feedback requested: 
+</p>
+<p>
+DRAFT IG NOTE: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?
+</p>
+<p>
+DRAFT IG NOTE: Do we want to show URL re-writing here? Or indicate that the default expectation is that the destination server uses the public FHIR service URL in returned resources?
+</p>
 </blockquote>
 
 
@@ -212,7 +219,11 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <blockquote class="note-to-balloters">
 <p>
-Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?</p>
+DRAFT IG NOTE: How/do we want to show URL re-writing here?
+</p>
+<p>
+DRAFT IG NOTE: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?
+</p>
 </blockquote>
 
 **Exchange Flow**
@@ -283,7 +294,11 @@ The originator later retrieves the response data using the address previously re
 
 <blockquote class="note-to-balloters">
 <p>
-Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or would it be better to include just one--given that the guide does not prescribe a particular URL structure?</p>
+DRAFT IG NOTE: How/do we want to show URL re-writing here?
+</p>
+<p>
+DRAFT IG NOTE: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?
+</p>
 </blockquote>
 
 **Exchange Flow**
