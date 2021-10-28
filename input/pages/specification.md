@@ -23,7 +23,7 @@ To support the routing approaches described in this guide, the destination SHALL
 
 The partnering destination and Inbound Gateway intermediary are free to determine the appropriate structure of the public FHIR service base URL to meet their preferences and technical requirements. For example, the URL's hostname may refer to either the destination or the intermediary and path segments may be included to identify the destination, specify the supported FHIR version, etc. 
 
-<blockquote class="stu-note">
+<blockquote class="note-to-balloters">
 <p>
 Feedback requested: Is it helpful to include the following example approaches? Or would it be better to omit them--given that the guide does not prescribe a particular URL structure?</p>
 </blockquote>
@@ -142,10 +142,11 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 **Exchange flow**
 
-<blockquote class="stu-note">
+<blockquote class="note-to-balloters">
 <p>
 Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?</p>
 </blockquote>
+
 
 ***Example - Intermediary's Base URL followed by a path indicating the destination***
 
@@ -209,7 +210,7 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 
 
-<blockquote class="stu-note">
+<blockquote class="note-to-balloters">
 <p>
 Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?</p>
 </blockquote>
@@ -280,7 +281,7 @@ The originator later retrieves the response data using the address previously re
 
 <p></p>
 
-<blockquote class="stu-note">
+<blockquote class="note-to-balloters">
 <p>
 Feedback requested: Would it be helpful to include multiple examples using different URL approaches? Or would it be better to include just one--given that the guide does not prescribe a particular URL structure?</p>
 </blockquote>

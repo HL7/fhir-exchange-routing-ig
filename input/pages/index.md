@@ -1,4 +1,4 @@
-﻿<blockquote class="stu-note">
+﻿<blockquote class="note-to-balloters">
 <p>
 This specification is a proposed Standard for Trial Use. It is expected to continue to evolve and improve through connectathon testing and feedback from early adopters. 
 </p>
@@ -133,9 +133,12 @@ The guide is organized into the following sections:
 		<td>Adjustments based on public discussions during the week of Oct. 18. <br><br>Specification page: Added section, Assumptions: Partnership and setup between the originator and intermediaries. Added content to the section, Public FHIR service URL of the destination, indicating that the guide does not prescribe a particular URL structure. Added section, Private FHIR service base URLs used in routing between intermediaries and to the actual destination server. Added section, Sharing of private URLs among the destination and partner intermediaries. Removed HTTP header and querystring flows and replaced with URL-based options
  <br><br>Index page: added STU note. <br><br>Use Cases and Roles page: Removed a scenario from the Excluded Scenarios bullet a statement. Added an Assumptions and Setup Steps section. Added links within the scenario overviews to URL rewriting section in the Specification page</td>
   	  </tr>
+	<tr>
+		<td>October 27, 2021</td>
+		<td>Added Security page</td>
+  	  </tr>
    </tbody>
   </table>
-
 
 
 <br />

@@ -12,6 +12,9 @@
       <li>
         <a href="exceptions.html">Exception Handling</a>
       </li>
+      <li>
+        <a href="security.html">Security</a>
+      </li>
 	</ul>
   </li>
   <li><a href="specification.html">Specification</a></li>

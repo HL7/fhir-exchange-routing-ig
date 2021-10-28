@@ -75,6 +75,11 @@
 	        <generation value="markdown"/>
 		  </page>
 		  <page>
+		    <nameUrl value="security.html"/>
+		    <title value="Security"/>
+	        <generation value="markdown"/>
+		  </page>
+		  <page>
 		    <nameUrl value="specification.html"/>
 		    <title value="Specification"/>
 		    <generation value="markdown"/>
