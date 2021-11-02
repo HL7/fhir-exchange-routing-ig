@@ -137,8 +137,13 @@ The guide is organized into the following sections:
 		<td>October 27, 2021</td>
 		<td>Added Security page</td>
   	  </tr>
+        <tr>
+		<td>November 2, 2021</td>
+		<td>Added illustrations of single and multiple intermediary/network exchange to the Specification page. Other adjustments to the Specification page based on Oct 28 public call.</td>
+  	  </tr>
    </tbody>
   </table>
+
 
 
 <br />

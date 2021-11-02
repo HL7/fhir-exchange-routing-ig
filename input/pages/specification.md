@@ -7,10 +7,10 @@ This section further describes details of the scenarios introduced in the [Use C
 This guide assumes that the destination and intermediary participants have established business arrangements and performed configuration activities prior to processing requests. These SHALL include the following, but MAY include the setup of additional value-add services performed by the intermediary participants.
 
 - The Inbound Gateway intermediary SHALL agree to accept FHIR requests on the destination's behalf
+- The destination and Inbound Gateway intermediary SHALL establish the destination's public FHIR service base URL [(details below)](#destinations-public-fhir-service-base-url) according to their preferences
 - One or more additional delegated intermediaries MAY optionally agree to participate in the routing of requests between the Inbound Gateway intermediary and the destination
-- The destination and Inbound Gateway intermediary establish the destination's [public FHIR service base URL](#destinations-public-fhir-service-base-url) according to their needs
-- If the hostname in the destination's public FHIR service base URL is maintained by the destination organization, the destination SHALL configure DNS entries for its public FHIR service base URL so that requests resolve to the Inbound Gateway intermediary
-- Each participating intermediary SHALL configure its internal routing mechanisms to enable forwarding of requests to either the destination system or another participating intermediary, as prearranged among the parties. Note: This guide does not prescribe particular routing logic or technical approaches to be used by an intermediary
+- Each participating intermediary SHALL configure its internal routing mechanisms to enable forwarding of requests to either the destination system or another participating intermediary, as prearranged among the parties. 
+  - Note: This guide does not prescribe particular routing logic or technical approaches to be used by an intermediary
 - One or more public endpoint directories MAY be configured to support searching for the destination and return of the destination's public FHIR service URL 
 
 <p></p>
@@ -36,20 +36,34 @@ Example approaches:
 
 This guide does not prescribe a particular URL structure to be used; however, it SHALL be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) that originators can use without knowledge of its individual components--as they do any other FHIR service URL
 
-#### Private FHIR service base URLs used in routing between intermediaries and to the actual destination server
+<div><p>
+  <img src="one-int-overview.png" style="float:none; width:1100px">  
+    </p>
+</div>
+<p></p>
 
-The destination and each delegated intermediary (participating in exchange hops following the Inbound Gateway intermediary) SHALL define its own URL at which it accepts requests intended for the destination.  Each party is free to determine the appropriate structure of the URL to meet its preferences and technical requirements, as described in the preceding section.
+#### FHIR service base URLs used in routing between intermediaries and to the actual destination server
+
+The destination and each delegated intermediary (participating in exchange hops following the Inbound Gateway intermediary) defines the URL at which it accepts requests intended for the destination.  Each party is free to determine the appropriate structure of the URL to meet its preferences and technical requirements, as described in the preceding section.
 
 This guide does not prescribe a particular URL structure to be used; however, it SHALL: 
 
 - be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) 
 - be a unique URL associated only with the destination.
 
-#### Sharing of private URLs among the destination and partner intermediaries
+#### Sharing of URLs among the destination and partner intermediaries
 
-Private URLs are shared between participating parties as needed to facilitate routing during the exchange. This guide does not assume that a participant will be aware of the URLs used by all "hops" in the exchange, but only its own URL and that of the next participant to which it forwards a request.
+FHIR service base URLs are shared between participating parties as needed to facilitate routing during the exchange. This guide does not assume that a participant will be aware of the URLs used by all "hops" in the exchange, but only its own URL and that of the next participant to which it forwards a request.
 
 <p></p>
+
+<div><p>
+  <img src="two-int-overview.png" style="float:none; width:1100px">  
+    </p>
+</div>
+<p></p>
+
+
 
 ### References to the service base URL in returned FHIR resources
 
