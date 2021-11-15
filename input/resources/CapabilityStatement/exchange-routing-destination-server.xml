@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="exchange-routing-destination-server" />
+  <url value="http://hl7.org/fhir/us/exchange-routing/CapabilityStatement/exchange-routing-destination-server" />
+  <version value="0.1.0" />
+  <name value="ExchangeRoutingDestinationServerCapabilityStatement" />
+  <title value="Exchange Routing Destination Server Capability Statement" />
+  <status value="active" />
+  <experimental value="false" />
+  <date value="2021-11-15T00:00:00-05:00" />
+  <publisher value="HL7 International - FHIR Infrastructure" />
+  <description value="This CapabilityStatement describes the expected capabilities of an destination FHIR server that conforms to the conventions of the Hybrid / Intermediary Exchange FHIR implementation guide." />
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166" />
+      <code value="US" />
+      <display value="United States of America" />
+    </coding>
+  </jurisdiction>
+  <kind value="requirements" />
+  <fhirVersion value="4.0.1" />
+  <format value="xml" />
+  <format value="json" />
+  <patchFormat value="application/json-patch+json" />
+  <implementationGuide value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing" />
+  <rest>
+    <mode value="server" />
+    <documentation value="When participating in exchanges involving an intermediary as described in the Hybrid / Intermediary FHIR IG, the server **SHALL**: 1. Populate references to the destination FHIR server contained in FHIR resources it returns (e.g., in the Bundle.entry.fullUrl element) and in HTTP header parameters (e.g., Content-Location) with the its public FHIR service base URL. 1. Implement RESTful behavior according to the FHIR specification. 1. Support the JSON source format. &#xA;When participating in exchanges involving an intermediary as described in the Hybrid / Intermediary FHIR IG, the server **SHOULD**: 1. Support the XML source format." />
+    <security>
+      <description value="The server SHALL implement Transport Layer Security (TLS) for all exchanges covered in this IG. &#xA;1. The server MAY implement the [HL7 / UDAP Security for Scalable Registration, Authentication, and Authorization FHIR Implementation Guide](https://build.fhir.org/ig/HL7/fhir-udap-security-ig/branches/main/index.html). 1. For general security considerations refer to [FHIR Security and Privacy Considerations](https://www.hl7.org/fhir/secpriv-module.html). &#xA;1. For additional security guidance, refer to the [core FHIR Security guidance page](https://www.hl7.org/fhir/security.html)." />
+    </security>
+  </rest>
+</CapabilityStatement>

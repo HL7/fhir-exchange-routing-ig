@@ -54,6 +54,15 @@
 	    <exampleBoolean value="false"/>
 	  </resource>	  
 
+  	  <resource>
+	    <reference>
+	      <reference value="CapabilityStatement/exchange-routing-destination-server"/>
+	      <display value="Exchange Routing CapabilityStatement - Destination Server"/>
+	    </reference>
+	    <name value="Exchange Routing CapabilityStatement - Destination Server"/>
+	    <exampleBoolean value="false"/>
+	  </resource>	  
+
 <!-- ************************************************************* Pages ************************************************************ -->
       <page>
 	      <nameUrl value="toc.html"/>

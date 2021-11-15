@@ -143,7 +143,7 @@ The guide is organized into the following sections:
   	  </tr>
         <tr>
 		<td>November 15, 2021</td>
-		<td>Updates to Specification, Use Cases and Security pages based on consideration of recent discussions about scope and security. Tightened the scope description to focus on exchanges conducted over the public internet using RESTful interactions. Specified further requirements related to routing and trust behavior to reduce potential complexity and enable application of typical security best practices including those detailed in the FAST Security IG. Requied destination's use of its public URL in returned FHIR resources and removed URL rewriting from the IG's scope. Added more security specifics.</td>
+		<td>Updates to Specification, Use Cases and Security pages based on consideration of recent discussions about scope and security. Tightened the scope description to focus on exchanges conducted over the public internet using RESTful interactions. Specified further requirements related to routing and trust behavior to reduce potential complexity and enable application of typical security best practices including those detailed in the FAST Security IG. Requied destination's use of its public URL in returned FHIR resources and removed URL rewriting from the IG's scope. Added more security specifics. Added CapabilityStatement for the destination server</td>
   	  </tr>
    </tbody>
   </table>
