@@ -169,14 +169,14 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-**Exchange flow**
-
 <blockquote class="note-to-balloters">
 <p>
 DRAFT IG NOTE: Would it be helpful to include multiple examples using different URL approaches? Or is it better to include just one--given that the guide does not prescribe a particular URL structure?
 </p>
 </blockquote>
 
+
+**Exchange flow**
 
 
 ***Example - Intermediary's Base URL followed by a path indicating the destination***
@@ -247,7 +247,7 @@ DRAFT IG NOTE: Would it be helpful to include multiple examples using different 
 ***Example - Intermediary's Base URL followed by a path indicating the destination***
 
 <div><p>
-  <img src="uc-search-two-intermediaries-int-url-plus-segment.png" style="float:none; width:1000px">  
+  <img src="uc-search-two-intermediaries-int-url-plus-segment.png" style="float:none; width:1100px">  
     </p>
 </div>
 <p></p>
@@ -316,7 +316,7 @@ DRAFT IG NOTE: Would it be helpful to include multiple examples using different 
 ***Example - Intermediary's Base URL followed by a path indicating the destination***
 
 <div><p>
-  <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none; width:1000px">  
+  <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none; width:1100px">  
     </p>
 </div>
 
