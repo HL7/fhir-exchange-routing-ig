@@ -64,7 +64,7 @@ This guide does not prescribe a particular URL structure to be used; however, it
 
 #### References to the service base URL in returned FHIR resources
 
-References to the destination's server in FHIR resources that it produces SHALL be consistent with the destination's single public FHIR service base address.  
+References to the destination's server in FHIR resources that it produces SHALL equal the destination's single public FHIR service base address.  
 
 For example, the Bundle.entry.fullUrl element for a resource on the destination's server SHALL contain the same FHIR service base address as the destination would publish in a public endpoint directory.  
 
