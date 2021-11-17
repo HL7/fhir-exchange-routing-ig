@@ -14,7 +14,7 @@ Until balloting begins, feedback is welcome and may be submitted through the <a 
 
 ### Overview
 
-This implementation guide provides guidance for enabling RESTful FHIR interactions across one or more "passive" intermediaries. 
+This implementation guide provides guidance for enabling FHIR REST interactions across one or more "passive" intermediaries, as an alternative to FHIR Messaging exchange.
 
 It supports exchanges where the client and destination FHIR server interact with the same steps, content and responsibilities as in a direct connection--while enabling the destination to "sit behind" an intermediary that can provide services such as firewall protection.
 
@@ -26,7 +26,7 @@ Potential applications of the IG include use by implementers of payer/provider u
 
 As the range of healthcare actors using FHIR has grown, so has the need to route exchanges across intermediaries such as clearinghouses, HIEs, national networks, and others. An example of this scenario is the situation in which a payer uses a clearinghouse intermediary as their 'gateway' for receiving FHIR requests. 
 
-Stakeholders use intermediaries for technical, operational and business reasons. The intermediary model was born in the world of the original X12 transaction set and is expected to continue as RESTful FHIR API integration evolves. Other networks, including HIEs and national networks, have emerged as brokering intermediaries for document access/exchange, e-prescribing and other purposes, and may also engage in FHIR-based interoperability.
+Stakeholders use intermediaries for technical, operational and business reasons. The intermediary model was adopted by many payer and provider systems with the original X12 transaction set and is expected to continue as FHIR REST API integration evolves. Other networks, including HIEs and national networks, have emerged as brokering intermediaries for document access/exchange, e-prescribing and other purposes, and may also engage in FHIR-based interoperability.
 
 This implementation guide defines conventions for certain FHIR exchanges that involve such intermediaries. It establishes a basic foundation that will be enhanced and built on over time as stakeholders encounter additional needs.
 
@@ -51,6 +51,17 @@ This implementation guide is intended be used in the United States.
 **Out of scope of this version of the guide**
 
 The guide does not address all intermediary exchange scenarios that exist today, and does not aim to support emerging network needs such as those posed by the Trusted Exchange Framework and Common Agreement (TEFCA). 
+
+Excluded from scope are environments or scenarios where:
+
+- trust is not negotiated between the originating client and the destination. For example, scenarios where the client establishes trust with an intermediary instead of the destination are not supported
+- the originating client addresses requests to anything but the destination’s public URL (for example, instead submitting to a different, network-assigned URL representing the destination)
+- the destination does not respond using its pubic FHIR service base URL in elements that reference the destination's server within returned FHIR resources (for example, populating elements such as fullUrl with a non-public system URL)
+- one or more intermediaries rewrite URLs representing the destination server in returned FHIR resources.
+
+In addition, this guide does not provide guidance for the use of [FHIR Messaging](https://www.hl7.org/fhir/messaging.html), which also includes routing features that can be used to exchange message content through intermediaries.
+
+<p></p>
 
 The guide may be expanded to cover additional environments and scenarios in the future. 
 
@@ -164,6 +175,10 @@ The guide is organized into the following sections:
         <tr>
 		<td>November 17, 2021</td>
 		<td>Updates to Home page</td>
+  	  </tr>
+        <tr>
+		<td>November 17, 2021 6ET</td>
+		<td>Additional adjustments to Home page and Use Case page based on ITS WG review</td>
   	  </tr>
    </tbody>
   </table>

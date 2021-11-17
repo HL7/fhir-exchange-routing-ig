@@ -1,7 +1,8 @@
 This guide supports scenarios where intermediaries take part in RESTful FHIR exchanges between an initiating system (the "originator") and the desired endpoint system (the "destination").  It focuses on scenarios where:
 
 - the originator directs the exchange to the destination's public FHIR service base URL, for example as retrieved from an endpoint directory
-- 
+
+  
 - but the destination has an arrangement where an intermediary accepts the request on the destination's behalf and then routes it to the destination's system -- either directly or through another intermediary.
 
 This page defines the roles that intermediaries play in the scenarios addressed in this guide and then describes those scenarios more fully.
@@ -26,17 +27,21 @@ This page defines the roles that intermediaries play in the scenarios addressed 
     <tr>
       <td>Inbound  Gateway</td>
       <td>This intermediary role receives requests intended for the destination and  forwards them to the destination system or another intermediary</td>
-      <td>The Inbound Gateway assumes the responsibility of securing a public endpoint and potentially performing other work (registering clients, etc.) on behalf of the destination</td>
-      <td>Public DNS entries are used to “point” the destination’s public URL to this intermediary. Common intermediary role for financial and administrative data exchange</td>
+      <td>The Inbound Gateway assumes the responsibility of establishing transport security with submitters to the public URL and potentially performing other work on behalf of the destination</td>
+      <td>Public DNS entries are used to “point” the destination’s public URL to this intermediary
+        </td>
     </tr>
     <tr>
       <td>Delegated  Intermediary</td>
       <td>This intermediary role assists in routing from a different intermediary to the destination system</td>
-      <td>This intermediary may serve as a public network or hub to which the destination system is connected</td>
-      <td>Intermediaries may share non-public routing information to support delivery to the ultimate destination</td>
+      <td>This intermediary may serve as a public network to which the destination system is connected</td>
+      <td>Intermediaries share non-public routing information to pre-arrange for delivery to the ultimate destination</td>
     </tr>
   </tbody>
 </table>
+
+
+
 
 <p></p>
 
