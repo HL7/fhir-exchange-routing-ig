@@ -3,15 +3,26 @@
 This specification is a proposed Standard for Trial Use. It is expected to continue to evolve and improve through connectathon testing and feedback from early adopters. 
 </p>
 <p>
-Feedback is welcome and may be submitted through the <a href="https://chat.fhir.org/#narrow/stream/264775-FHIR-at.20Scale.20.28FAST.29.3A.20Exchange.20with.2Fwithout.20intermediaries">FHIR at Scale (FAST): Exchange with/without intermediaries Zulip stream</a>.
+Until balloting begins, feedback is welcome and may be submitted through the <a href="https://chat.fhir.org/#narrow/stream/264775-FHIR-at.20Scale.20.28FAST.29.3A.20Exchange.20with.2Fwithout.20intermediaries">FHIR at Scale (FAST): Exchange with/without intermediaries Zulip stream</a>.
 </p>
 </blockquote>
+
 
 
 
 <p></p>
 
 ### Overview
+
+This implementation guide provides guidance for enabling RESTful FHIR interactions across one or more "passive" intermediaries. 
+
+It supports exchanges where the client and destination FHIR server interact with the same steps, content and responsibilities as in a direct connection--while enabling the destination to "sit behind" an intermediary that can provide services such as firewall protection.
+
+Potential applications of the IG include use by implementers of payer/provider use cases such as Da Vinci Prior Authorization Support.
+
+<p></p>
+
+### Background
 
 As the range of healthcare actors using FHIR has grown, so has the need to route exchanges across intermediaries such as clearinghouses, HIEs, national networks, and others. An example of this scenario is the situation in which a payer uses a clearinghouse intermediary as their 'gateway' for receiving FHIR requests. 
 
@@ -28,7 +39,8 @@ This implementation guide defines conventions for certain FHIR exchanges that in
 The implementation guide focuses on exchanges where...
 
 - the originator directs the exchange to the destination's public FHIR service base URL, for example as retrieved from an endpoint directory
-- an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system.
+- an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system
+- the originator and destination negotiate trust, with participating intermediaries passively conveying resulting tokens or other security artifacts
 
 The guide aims to support all RESTful FHIR interaction types (GET, POST, etc.) within this set of scenarios.
 
@@ -38,7 +50,9 @@ This implementation guide is intended be used in the United States.
 
 **Out of scope of this version of the guide**
 
-The guide may not address all intermediary exchange scenarios that exist today. It may be expanded to cover those in the future. 
+The guide does not address all intermediary exchange scenarios that exist today, and does not aim to support emerging network needs such as those posed by the Trusted Exchange Framework and Common Agreement (TEFCA). 
+
+The guide may be expanded to cover additional environments and scenarios in the future. 
 
 <p></p>
 
@@ -58,6 +72,8 @@ The guide is organized into the following sections:
 
 - [Use Cases and Roles](use-cases.html) gives an overview of the guide's goals and participants.
 - [Specification](specification.html) describes the solution in detail.
+- [Exception Handling](exceptions.html) describes expectations for conveying destination-reported exceptions as well as those detected by an intermediary.
+- [Security](security.html) identifies aspects needed to support the IG's flows and addtional guidance defined elsewhere.
 
 <p></p>
 
@@ -144,6 +160,10 @@ The guide is organized into the following sections:
         <tr>
 		<td>November 15, 2021</td>
 		<td>Updates to Specification, Use Cases and Security pages based on consideration of recent discussions about scope and security. Tightened the scope description to focus on exchanges conducted over the public internet using RESTful interactions. Specified further requirements related to routing and trust behavior to reduce potential complexity and enable application of typical security best practices including those detailed in the FAST Security IG. Requied destination's use of its public URL in returned FHIR resources and removed URL rewriting from the IG's scope. Added more security specifics. Added CapabilityStatement for the destination server</td>
+  	  </tr>
+        <tr>
+		<td>November 17, 2021</td>
+		<td>Updates to Home page</td>
   	  </tr>
    </tbody>
   </table>
