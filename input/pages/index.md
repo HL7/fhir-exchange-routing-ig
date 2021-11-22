@@ -19,6 +19,11 @@ This implementation guide provides guidance for enabling FHIR REST interactions 
 
 It supports exchanges where the client and destination FHIR server interact with the same steps, content and responsibilities as in a direct connection--while enabling the destination to "sit behind" an intermediary that can provide value-add services such as cloud-scale technical infrastructure, support services, denial of service protection, and business/operational onboarding.
 
+- Example actors for the initial IG include organizations such clinics, providers, hospitals, payers, etc.
+- Example intermediaries for the initial IG include organizations such as clearinghouses (i.e., Change, Availity) and HIEs ( i.e., eHealth Exchange).
+
+<p></p>
+
 Potential applications of this initial IG include use by implementers of payer/provider use cases such as Da Vinci value-based care use case in which intermediaries may bridge connectivity between actors. . Other HL7 accelerators (CARIN, Gravity, etc.) are developing disparate actor use cases in which intermediaries may be involved.
 
 The community recognizes that direct point to point RESTful interaction is a primary interaction pattern. However, we also recognize that intermediaries play important roles for some healthcare actors and having a set of best practices so that we don’t put additional burdens on the client actors is key to running FHIR at scale. This is called the ‘hybrid’ model approach and this IG documents a set of best practices to enable connectivity both in point to point and intermediary facilitated exchange without the client actor needing to have knowledge of what model is executing.
@@ -186,6 +191,10 @@ The guide is organized into the following sections:
         <tr>
 		<td>November 21, 2021</td>
 		<td>Updates to the narrative in the Home, Use Cases and Roles, Specification, Exception Handling and Security pages.</td>
+  	  </tr>
+      <tr>
+		<td>November 22, 2021</td>
+		<td>Added example participants.</td>
   	  </tr>
    </tbody>
   </table>
