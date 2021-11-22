@@ -2,7 +2,7 @@ This section further describes details of the scenarios introduced in the [Use C
 
 <p></p>
 
-### Assumptions: Partnership and setup between the originator and intermediaries
+### Assumptions: Partnership and setup between the destination and intermediaries
 
 This guide assumes that the destination and intermediary participants have established business arrangements, if required, and performed configuration activities, if required, prior to processing requests. These SHALL include the following, but MAY include the setup of additional value-add services performed by the intermediary participants.
 

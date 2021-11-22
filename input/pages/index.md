@@ -196,6 +196,10 @@ The guide is organized into the following sections:
 		<td>November 22, 2021</td>
 		<td>Added example participants.</td>
   	  </tr>
+      <tr>
+		<td>November 22, 2021 (2nd edit)</td>
+		<td>Corrected type on Specification page. Changed "Partnership and setup between the originator and intermediaries" to "Partnership and setup between the destination and intermediaries"</td>
+  	  </tr>
    </tbody>
   </table>
 
