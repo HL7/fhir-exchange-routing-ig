@@ -1,6 +1,6 @@
 ﻿<blockquote class="note-to-balloters">
 <p>
-This specification is a proposed Standard for Trial Use. It is expected to continue to evolve and improve through connectathon testing and feedback from early adopters. 
+This specification is a proposed Standard for Trial Use. It is expected to continue to evolve and improve through connectathon testing, feedback from early adopters, and continued industry development and alignment. 
 </p>
 <p>
 Until balloting begins, feedback is welcome and may be submitted through the <a href="https://chat.fhir.org/#narrow/stream/264775-FHIR-at.20Scale.20.28FAST.29.3A.20Exchange.20with.2Fwithout.20intermediaries">FHIR at Scale (FAST): Exchange with/without intermediaries Zulip stream</a>.
@@ -10,15 +10,18 @@ Until balloting begins, feedback is welcome and may be submitted through the <a 
 
 
 
+
 <p></p>
 
 ### Overview
 
-This implementation guide provides guidance for enabling FHIR REST interactions across one or more "passive" intermediaries, as an alternative to FHIR Messaging exchange.
+This implementation guide provides guidance for enabling FHIR REST interactions across one or more intermediaries using a passive approach. A passive approach is one in which the intermediary is ‘passing through’ the interaction and the requesting actor is not necessarily aware of the presence of the intermediary. Intermediaries in this context are organizations such as clearinghouses, health information exchanges, and similar entities.  We recognize that there are ‘active’ intermediary use cases (TEF QHIN, aggregation services, record locator, etc.) which will be handled in future IGs.
 
-It supports exchanges where the client and destination FHIR server interact with the same steps, content and responsibilities as in a direct connection--while enabling the destination to "sit behind" an intermediary that can provide services such as firewall protection.
+It supports exchanges where the client and destination FHIR server interact with the same steps, content and responsibilities as in a direct connection--while enabling the destination to "sit behind" an intermediary that can provide value-add services such as cloud-scale technical infrastructure, support services, denial of service protection, and business/operational onboarding.
 
-Potential applications of the IG include use by implementers of payer/provider use cases such as Da Vinci Prior Authorization Support.
+Potential applications of this initial IG include use by implementers of payer/provider use cases such as Da Vinci value-based care use case in which intermediaries may bridge connectivity between actors. . Other HL7 accelerators (CARIN, Gravity, etc.) are developing disparate actor use cases in which intermediaries may be involved.
+
+The community recognizes that direct point to point RESTful interaction is a primary interaction pattern. However, we also recognize that intermediaries play important roles for some healthcare actors and having a set of best practices so that we don’t put additional burdens on the client actors is key to running FHIR at scale. This is called the ‘hybrid’ model approach and this IG documents a set of best practices to enable connectivity both in point to point and intermediary facilitated exchange without the client actor needing to have knowledge of what model is executing.
 
 <p></p>
 
@@ -40,23 +43,23 @@ The implementation guide focuses on exchanges where...
 
 - the originator directs the exchange to the destination's public FHIR service base URL, for example as retrieved from an endpoint directory
 - an intermediary accepts the request on the destination's behalf and then routes it--directly or through another intermediary--to the destination's system
-- the originator and destination negotiate trust, with participating intermediaries passively conveying resulting tokens or other security artifacts
+- the originator and destination have established trust, with participating intermediaries passively conveying resulting tokens or other security artifacts
 
 The guide aims to support all RESTful FHIR interaction types (GET, POST, etc.) within this set of scenarios.
 
-This implementation guide is intended be used in the United States.
+This implementation guide was initially created for US Realm but is certainly open to use anywhere it provides value.
 
 <p></p>
 
 **Out of scope of this version of the guide**
 
-The guide does not address all intermediary exchange scenarios that exist today, and does not aim to support emerging network needs such as those posed by the Trusted Exchange Framework and Common Agreement (TEFCA). 
+The guide does not address all intermediary exchange scenarios that exist today, and does not aim to support emerging network needs such as those posed by the Trusted Exchange Framework and Common Agreement (TEFCA). Environments and use cases supported by active intermediaries are recognized as valid, but are not the focus of the initial version of this guide.
 
 Excluded from scope are environments or scenarios where:
 
 - trust is not negotiated between the originating client and the destination. For example, scenarios where the client establishes trust with an intermediary instead of the destination are not supported
 - the originating client addresses requests to anything but the destination’s public URL (for example, instead submitting to a different, network-assigned URL representing the destination)
-- the destination does not respond using its pubic FHIR service base URL in elements that reference the destination's server within returned FHIR resources (for example, populating elements such as fullUrl with a non-public system URL)
+- the destination does not respond using its pubic FHIR service base URL in elements that reference the destination's server within returned FHIR resources (for example, populating elements such as fullUrl with a non-public system URL which would require URL rewriting)
 - one or more intermediaries rewrite URLs representing the destination server in returned FHIR resources.
 
 In addition, this guide does not provide guidance for the use of [FHIR Messaging](https://www.hl7.org/fhir/messaging.html), which also includes routing features that can be used to exchange message content through intermediaries.
@@ -179,6 +182,10 @@ The guide is organized into the following sections:
         <tr>
 		<td>November 17, 2021 6ET</td>
 		<td>Additional adjustments to Home page and Use Case page based on ITS WG review</td>
+  	  </tr>
+        <tr>
+		<td>November 21, 2021</td>
+		<td>Updates to the narrative in the Home, Use Cases and Roles, Specification, Exception Handling and Security pages.</td>
   	  </tr>
    </tbody>
   </table>

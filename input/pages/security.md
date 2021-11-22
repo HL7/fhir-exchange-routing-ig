@@ -9,7 +9,7 @@ All exchanges in the exchange SHALL use Transport Layer Security (TLS).
 
 ### Trust Determination
 
-In this exchange model, trust is negotiated solely between the originator and destination. The destination SHALL determine whether it trusts the originator or not; any intermediaries involved in the exchange SHALL play a passive, "pass through" role in the process.
+In this exchange model, trust is negotiated or established solely between the originator and destination. The destination SHALL determine whether it trusts the originator or not; any intermediaries involved in the exchange SHALL play a passive, "pass through" role in the process.
 
 Required behavior:
 
