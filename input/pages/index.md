@@ -194,11 +194,7 @@ The guide is organized into the following sections:
   	  </tr>
       <tr>
 		<td>November 22, 2021</td>
-		<td>Added example participants.</td>
-  	  </tr>
-      <tr>
-		<td>November 22, 2021 (2nd edit)</td>
-		<td>Corrected type on Specification page. Changed "Partnership and setup between the originator and intermediaries" to "Partnership and setup between the destination and intermediaries"</td>
+		<td>Added example participants to the home page narrative. Corrected a typo on the Specification page ("Partnership and setup between the originator and intermediaries" changed to "Partnership and setup between the destination and intermediaries"). Refined destination server and intermediary capability statements. Expanded narrative in capability statement pages.</td>
   	  </tr>
    </tbody>
   </table>

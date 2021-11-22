@@ -2,7 +2,7 @@
    "package-id": "hl7.fhir.us.exchange-routing",
    "title": "Hybrid / Intermediary Exchange",
    "canonical": "http://hl7.org/fhir/us/exchange-routing",
-   "introduction": "This FHIR implementation Guide describes the health care standard for HTTP exchange in a hybrid model of both point to point communication and intermediary.",
+   "introduction": "This FHIR implementation guide provides guidance for enabling FHIR REST interactions across one or more intermediaries using a passive approach.",
    "category" : "EHR Access", 
    "list": [
       {
