@@ -24,7 +24,7 @@ It supports exchanges where the client and destination FHIR server interact with
 
 <p></p>
 
-Potential applications of this initial IG include use by implementers of payer/provider use cases such as Da Vinci value-based care use case in which intermediaries may bridge connectivity between actors. . Other HL7 accelerators (CARIN, Gravity, etc.) are developing disparate actor use cases in which intermediaries may be involved.
+Potential applications of this initial IG include use by implementers of payer/provider use cases such as Da Vinci value-based care use case in which intermediaries may bridge connectivity between actors. Other HL7 accelerators (CARIN, Gravity, etc.) are developing disparate actor use cases in which intermediaries may be involved.
 
 The community recognizes that direct point to point RESTful interaction is a primary interaction pattern. However, we also recognize that intermediaries play important roles for some healthcare actors and having a set of best practices so that we don’t put additional burdens on the client actors is key to running FHIR at scale. This is called the ‘hybrid’ model approach and this IG documents a set of best practices to enable connectivity both in point to point and intermediary facilitated exchange without the client actor needing to have knowledge of what model is executing.
 
@@ -195,6 +195,10 @@ The guide is organized into the following sections:
       <tr>
 		<td>November 22, 2021</td>
 		<td>Added example participants to the home page narrative. Corrected a typo on the Specification page ("Partnership and setup between the originator and intermediaries" changed to "Partnership and setup between the destination and intermediaries"). Refined destination server and intermediary capability statements. Expanded narrative in capability statement pages.</td>
+  	  </tr>
+      <tr>
+		<td>November 23, 2021</td>
+		<td>Removed statements indicating that the destination must sign payloads it returns. Removed 'notes to balloters' related to whether multiple URL patterns should be represented in examples.</td>
   	  </tr>
    </tbody>
   </table>

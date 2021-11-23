@@ -13,7 +13,6 @@ When participating in exchanges described in the Hybrid / Intermediary FHIR IG, 
 
 <h3>Security</h3>
 - Destination server **SHALL** implement Transport Layer Security (TLS) for all exchanges covered in this IG.
-- Destination server **SHALL** sign any response payload and tokens it returns.
 - Destination server **MAY** implement the [HL7 / UDAP Security for Scalable Registration, Authentication, and Authorization FHIR Implementation Guide](https://build.fhir.org/ig/HL7/fhir-udap-security-ig/branches/main/index.html).
 - For general security considerations refer to [FHIR Security and Privacy Considerations](https://www.hl7.org/fhir/secpriv-module.html). 
 - For additional security guidance, refer to the [core FHIR Security guidance page](https://www.hl7.org/fhir/security.html). 
