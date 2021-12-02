@@ -20,7 +20,7 @@ Required behavior:
 The FHIR IG referenced below is currently in ballot reconciliation and has not yet been published by HL7. This reference will be updated to the published version of the referenced security guide prior to this guide's publication</p>
 </blockquote>
 
-Implementers MAY adopt UDAP workflows for client registration, authentication and authorization as described in the [HL7 / UDAP Security for Scalable Registration, Authentication, and Authorization FHIR Implementation Guide](https://build.fhir.org/ig/HL7/fhir-udap-security-ig/branches/main/index.html) 
+Implementers MAY adopt UDAP workflows for client registration, authentication and authorization as described in the [HL7 / UDAP Security for Scalable Registration, Authentication, and Authorization FHIR Implementation Guide](http://hl7.org/fhir/us/udap-security/2021Sep/) 
 
 <p></p>
 
