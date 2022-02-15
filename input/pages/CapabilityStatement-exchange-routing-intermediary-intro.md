@@ -19,11 +19,5 @@ When participating in exchanges described in the Hybrid / Intermediary FHIR IG, 
 - For general security considerations refer to [FHIR Security and Privacy Considerations](https://www.hl7.org/fhir/secpriv-module.html). 
 - For additional security guidance, refer to the [core FHIR Security guidance page](https://www.hl7.org/fhir/security.html). 
 
-<p></p>
-<blockquote class="note-to-balloters">
-<p>
-The HL7 / UDAP Security for Scalable Registration, Authentication, and Authorization FHIR Implementation Guide referenced above is currently in ballot reconciliation and has not yet been published by HL7. This reference will be updated to the published version of the referenced security guide prior to this guide's publication</p>
-</blockquote>
-
 <br />
 

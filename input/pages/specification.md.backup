@@ -42,8 +42,8 @@ Considerations:
 
 While this guide does not prescribe a particular structure for the public FHIR service base URL used in these exchanges, implementers might consider the factors below when deciding their URL approach:
 
-<br><br>Using a public URL containing the intermediary's hostname, for example `fhir.intermediary1.com/myorg`, may make it more difficult for the destination to change the intermediary it uses in the future because that would force a change to its public URL
-<br><br>Using a public URL with a hostname that reflects the destination's identity, e.g., fhir.myorg.com, that is directed to an intermediary will require the destination to manage the DNS settings for that URL itself or provide access and authority for those settings to the intermediary.
+<br>Using a public URL containing the intermediary's hostname, for example `fhir.intermediary1.com/myorg`, may make it more difficult for the destination to change the intermediary it uses in the future because that would force a change to its public URL
+- Using a public URL with a hostname that reflects the destination's identity, e.g., fhir.myorg.com, that is directed to an intermediary will require the destination to manage the DNS settings for that URL itself or provide access and authority for those settings to the intermediary.
 
 </div>
 
