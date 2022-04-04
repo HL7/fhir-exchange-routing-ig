@@ -1,3 +1,6 @@
+Note: This section contains mandatory conformance requirements, noted with "SHALL", below.
+<p></p>
+
 ### Transport Security
 
 All exchanges in the exchange SHALL use Transport Layer Security (TLS).
