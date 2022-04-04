@@ -32,25 +32,28 @@ Example approaches:
 - *Base URL that reflects the destination's identity,* such as`fhir.example-destination.com`. In this method, the destination uses a public FHIR service base URL that reflects its own identity and, in turn, hides participation of the inbound gateway Intermediary it employs. The intermediary bases routing on the network IP address at which it receives the request (the IP to which the public URL's DNS record is mapped).
 - *Subdomain of intermediary's URL that identifies the destination,* such as `example-destination.example-intermediary.com`. In this method, the destination is represented using a subdomain of the inbound gateway Intermediary's URL. The intermediary bases routing on the network IP address to which the subdomain's DNS record is mapped.
 
-This guide does not prescribe a particular URL structure to be used; however, it SHALL be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) that originators can use without knowledge of its individual components--as they do any other FHIR service URL
+Regardless of the URL structure used as the public URL, it SHALL be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) that originators can use without knowledge of its individual components--as they do any other FHIR service URL
 
 <p></p>
 
-<div class="fm_rec"><b>Proposed resolution FHIR-35382.  Add...</b><br/><br/>
-
-Considerations:
-
+**Considerations**
+<br><br>
 While this guide does not prescribe a particular structure for the public FHIR service base URL used in these exchanges, implementers might consider the factors below when deciding their URL approach:
 
-<br><br>Using a public URL containing the intermediary's hostname, for example `fhir.intermediary1.com/myorg`, may make it more difficult for the destination to change the intermediary it uses in the future because that would force a change to its public URL
-<br><br>Using a public URL with a hostname that reflects the destination's identity, e.g., fhir.myorg.com, that is directed to an intermediary will require the destination to manage the DNS settings for that URL itself or provide access and authority for those settings to the intermediary.
+Use of a public URL containing the intermediary's hostname, for example `fhir.intermediary1.com/myorg`, provides human-recognizable context about the intermediary relationship, independent of the technical resolution of the URL. While this does not necessarily reflect a technical constraint to changing intermediaries, use of a public URL containing the intermediary's hostname may make it more difficult for the destination to change the intermediary as it may result in a change to its public URL. 
+
+More critically, any change to the destination's public URL–whether due to a change in intermediary or other reason--would impact originators using the original URL, creating a responsibility for the destination, intermediary or other party to make originators aware that the URL has changed so that they can start using the new one.
+
+Preferably, URL naming will accommodate changes to actors involved in the exchange or relationships between them, to avoid impacting originators.
 
 </div>
 
 
-<div><p>
-  <img src="one-int-routing.png" style="float:none; width:1000px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 2: FHIR Service URLs</strong></figcaption>
+    <img src="one-int-routing.png" style="float:none; width:1000px" title="Figure 2: FHIR Service URLs"/>  
+    </figure>
 </div>
 <p></p>
 
@@ -69,6 +72,10 @@ This guide does not prescribe a particular URL structure to be used; however, it
 
 - be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) 
 - be a unique URL associated only with the destination.
+
+**Note: Handling when an HIE plays the role of an aggregator.** In the case where the HIE is the entity serving the FHIR resources (acting as an aggregator that stores/serves the resources to the originator, and there is no visibility to the source systems):
+
+- The HIE is considered the destination, the public URL is that of the HIE, and the source entities would not be visible in the exchange
 
 #### Sharing of URLs among the destination and partner intermediaries
 
@@ -97,9 +104,11 @@ See [the Security section](security.html) for additional details.
 
 <p></p>
 
-<div><p>
-  <img src="one-int-trust.png" style="float:none; width:1000px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 3: Trust Overview</strong></figcaption>
+    <img src="one-int-trust.png" style="float:none; width:1000px" title="Figure 3: Trust Overview"/>  
+  </figure>
 </div>
 <p></p>
 
@@ -109,9 +118,11 @@ See [the Security section](security.html) for additional details.
 
 The required behavior described above for single-intermediary scenarios apply equally when one or more additional intermediaries participate in the exchange, as illustrated below.
 
-<div><p>
-  <img src="multi-int-overview.png" style="float:none; width:1000px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 4: Mutliple Intermediary Overview</strong></figcaption>
+    <img src="multi-int-overview.png" style="float:none; width:1000px" title="Figure 4: Multiple Intermediary Overview">  
+   </figure>
 </div>
 <p></p>
 
@@ -128,9 +139,11 @@ This initial release of the Hybrid/Intermediary Exchange IG focuses on a range o
 <p></p>
 Based on the rules and constraints described above, the following underscores scenarios that are not in scope of this implementation guide.
 
-<div><p>
-  <img src="not-supported.png" style="float:none; width:1000px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 5: Unsupported Scenario Overview</strong></figcaption>
+    <img src="not-supported.png" style="float:none; width:1000px" title="Figure 5: Unsupported Scenario Overview"/>  
+   </figure>
 </div>
 <p></p>
 
@@ -154,9 +167,9 @@ Before the exchange, the originator system obtains the destination's public FHIR
 
 The originator system then initiates a RESTful exchange (for example, a GET method to retrieve a FHIR resource) that is transmitted to the destination's public FHIR service address. 
 
-**Step 3. The exchange is received by the inbound gateway intermediary**
+**Step 3. The exchange is received by the inbound gateway intermediary through resolution of the public FHIR service base URL**
 
-The intermediary receives the request on behalf of the destination. The sections below describe multiple approaches for constructing the destination's public FHIR service address, but in all cases its URL resolves to a destination-specific location at the intermediary.
+The intermediary receives the request on behalf of the destination. The URL resolves to a destination-specific location at the intermediary.
 
 **Step 4. The intermediary routes the exchange to the destination**
 
@@ -168,7 +181,7 @@ Because the destination's public URL resolves to a destination-specific location
 
 The destination processes the request and synchronously returns its response. 
 
-Note that any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--SHALL be populated by the destination server to match the public FHIR service address used by the originator.
+_**Note - conformance requirement:**_ Any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--**SHALL** be populated by the destination server to match the public FHIR service address used by the originator.
 
 **Step 6. The intermediary passes through the response to the originator**
 
@@ -180,16 +193,11 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-
-
-**Exchange flow**
-
-
-***Example - Intermediary's Base URL followed by a path indicating the destination***
-
-<div><p>
-  <img src="uc-search-single-intermediary-int-url-plus-segment.png" style="float:none; width:1100px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 6: Example - Intermediary's Base URL followed by a path indicating the destination</strong></figcaption>
+    <img src="uc-search-single-intermediary-int-url-plus-segment.png" style="float:none; width:1100px" title="Example - Intermediary's Base URL followed by a path indicating the destination"/>  
+  </figure>
 </div>
 <p></p>
 
@@ -197,15 +205,19 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 This scenario supports a situation where one or more additional "delegated" intermediaries--beyond the inbound gateway with with the originator directly interacts--is used to deliver a request to its ultimate destination. 
 
-Below is the main flow of this scenario.
+Below is the main flow of this scenario. The initial steps in this scenario are the same as in the one-intermediary scenario above.
 
-**Step 1. Originator obtains the destination's public FHIR service address**1000
+**Step 1. Originator obtains the destination's public FHIR service address**
+
+Before the exchange, the originator system obtains the destination’s public FHIR service address, for example through a reference in a previously-received FHIR resource or by consulting an endpoint directory.
 
 **Step 2. Originator initiates a RESTful interaction using the destination's public FHIR service address**
 
-**Step 3. The exchange is received by the inbound gateway intermediary**
+The originator system then initiates a RESTful exchange (for example, a GET method to retrieve a FHIR resource) that is transmitted to the destination’s public FHIR service address.
 
-The initial steps in this scenario are the same as in the one-intermediary scenario above--the originator submits its request to the public FHIR service address for the destination, which is received by the inbound gateway intermediary to be routed onward.
+**Step 3. The exchange is received by the inbound gateway intermediary through resolution of the public FHIR service base URL**
+
+The originator submits its request to the public FHIR service address for the destination, and the public FHIR service base URL resolves to the inbound gateway intermediary to be routed onward.
 
 **Step 4. The inbound gateway intermediary routes the exchange to a second intermediary**
 
@@ -223,7 +235,7 @@ Based on routing metadata conveyed to it in the URL path or via HTTP headers, th
 
 The destination processes the request and synchronously returns its response. 
 
-Note that any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--SHALL be populated by the destination server to match the public FHIR service address used by the originator.
+_**Note - conformance requirement:**_ Note that any references to the destination's FHIR service in resources that are returned by the destination--for example, in a search result Bundle's fullUrl element--**SHALL** be populated by the destination server to match the public FHIR service address used by the originator.
 
 **Step 7. The second intermediary passes through the response to the inbound gateway intermediary**
 
@@ -239,28 +251,20 @@ The originator accepts the response. If it wishes to submit a follow-on request 
 
 <p></p>
 
-
-**Exchange Flow**
-
-***Example - Intermediary's Base URL followed by a path indicating the destination***
-
-<div><p>
-  <img src="uc-search-two-intermediaries-int-url-plus-segment.png" style="float:none; width:1100px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 7: Example - Intermediary's Base URL followed by a path indicating the destination</strong></figcaption>
+    <img src="uc-search-two-intermediaries-int-url-plus-segment.png" style="float:none; width:1100px" title="Figure 7: Example - Intermediary's Base URL followed by a path indicating the destination"/>  
+  </figure>  
 </div>
 <p></p>
-
-
-
-
-
-
 
 <p></p><hr><p></p>
 
 ### Asynchronous Scenario
 
 <p></p>
+Note: While the section below describes a GET request of information, all methods described in [FHIR Asynchronous Pattern](https://www.hl7.org/fhir/async.html) including Bulk Data Delete Request are supported by this IG.
 
 #### Scenario: Originator initiates an asynchronous retrieval of data from a Destination that uses an inbound gateway Intermediary
 
@@ -270,11 +274,15 @@ Below is the main flow of this scenario.
 
 **Step 1. Originator obtains the destination's public FHIR service address**
 
+Before the exchange, the originator system obtains the destination’s public FHIR service address, for example through a reference in a previously-received FHIR resource or by consulting an endpoint directory.
+
 **Step 2. Originator initiates a RESTful interaction using the destination's public FHIR service address**
 
 In this scenario, the originator populates the `Prefer` HTTP header with `respond-async` to notify the destination that it want to obtain the response data asynchronously.
 
-**Step 3. The exchange is received by the inbound gateway intermediary**
+**Step 3. The exchange is received by the inbound gateway intermediary through resolution of the public FHIR service base URL**
+
+The originator submits its request to the public FHIR service address for the destination, and the public FHIR service base URL resolves to the inbound gateway intermediary to be routed onward.
 
 **Step 4. The intermediary routes the exchange to the destination**
 
@@ -282,32 +290,34 @@ The `Prefer: respond-async` header is also forwarded to the destination.
 
 **Step 5. The destination processes the request and returns its response to the intermediary**
 
-The destination responds with an HTTP status code of `202 Accepted`, and an HTTP header containing a `Content-Location` parameter that specifies the URL at which the response data will be available.
+The destination processes the request and returns the location to poll for status to the intermediary. The destination responds with an HTTP status code of `202 Accepted`, and an HTTP header containing a `Content-Location` parameter that specifies the URL at which status of the request will be available
 
-The `Content-Location` base SHALL be populated by the destination to match the public FHIR service address used by the originator.
+**Step 7. The intermediary passes through the response to the originator**
 
-**Step 6. The intermediary passes through the response to the originator**
+The intermediary, which is holding a synchronous connection with the originator, passes through the response. 
+
+**Step 7. The originator polls for status**
+
+The originator polls for status until the server responds with a "completed" HTTP status code `200 OK` and body containing one or more URLs at which to retrieve the response data. 
+Note: The returned content location URL(s) may contain the public FHIR service base URL used to initiate the asynchronous exchange process--so that retrieval of the content also flows through the intermediary--but that is not required.
+
+**Step 8. The intermediary routes the status request to the destination**
+The intermediary forwards the request to the destination.
+
+**Step 9. The intermediary passes through the status response to the originator**
 
 The intermediary, which is holding a synchronous connection with the originator, passes through the response.
 
-**Step 7. The originator receives the response**
+**Step 10. The originator retrieves the response data**
 
-The originator accepts the response.
-
-**Step 8. The originator later retrieves the response data**
-
-The originator later retrieves the response data using the address previously returned in the `Content-Location` parameter of the initial response from the destination. This request and response are routed as described in Steps 1-7, except that the `Prefer: respond-async` parameter is not used.
+The originator retrieves the requested data using the URL(s) returned in the completed status response from the destination. This request and response are routed as described in Steps 1-7, except that the `Prefer: respond-async` parameter is not used.
 
 <p></p>
 
-
-**Exchange Flow**
-
-***Example - Intermediary's Base URL followed by a path indicating the destination***
-
-<div><p>
-  <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none; width:1100px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 8: Example - Intermediary's Base URL followed by a path indicating the destination</strong></figcaption>
+    <img src="uc-async-single-intermediary-int-url-plus-segment.png" style="float:none; width:1100px" title="Figure 8: Example - Intermediary's Base URL followed by a path indicating the destination"/>  
+  </figure>
 </div>
-
 <br>

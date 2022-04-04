@@ -4,7 +4,7 @@ This guide supports scenarios where intermediaries take part in RESTful FHIR exc
 Murta to do per Feb 1 call: Expand background on the rationales for using an intermediary (cloud scalability, security, other reasons)
 </div>
 
-Potential applications of this initial IG include use by implementers of payer/provider use cases such as Da Vinci value-based care use case in which intermediaries may bridge connectivity between actors. . Other HL7 accelerators (CARIN, Gravity, etc.) are developing disparate actor use cases in which intermediaries may be involved.
+Potential applications of this initial IG include use by implementers of payer/provider use cases such as Da Vinci value-based care use case in which intermediaries may bridge connectivity between actors. Other HL7 accelerators (CARIN, Gravity, etc.) are developing disparate actor use cases in which intermediaries may be involved.
 
 Specifically, it focuses on scenarios where:
 
@@ -65,14 +65,16 @@ While there are many potential exchange scenarios in which an intermediary could
 - the exchange is a RESTful FHIR interaction or complementary approach such as CDS hooks
 - an intermediary plays the **inbound gateway** role described above, accepting requests from the originator
 - one or more additional intermediaries optionally play the **delegated function Intermediary** role described above, assisting in routing to the destination
-- the originator directs its exchange to the intended destination's public FHIR service address, and the destination populates any elements referencing the destination server in returned FHIR resources (e.g., fullUrl) using its pubic FHIR service base URL
+- the originator directs its request to the destination’s public FHIR service URL, and the destination likewise uses that public FHIR service URL when referring to itself in the response (the destination populates elements referencing the destination server in returned FHIR resources, e.g., fullUrl, using the pubic FHIR service base URL)
 - trust has been established or is negotiated between the originating client and the destination; any participating intermediaries play only a pass-through role in authentication and authorization
 - the originator may be unaware that an intermediary will play a role in routing the request, and has no additional responsibilities beyond those in a typical point-to-point FHIR exchange.
 
 <p></p>
-<div><p>
-  <img src="supported.png" style="float:none; width:1000px">  
-    </p>
+<div>
+   <figure>
+    <figcaption class="figure-caption"><strong>Figure 1: High-level Exchange Overview</strong></figcaption>
+    <img src="supported.png" style="float:none; width:1000px" title="Figure 1: High-level Exchange Overview"/> 
+  </figure>
 </div>
 <p></p>
 
@@ -131,39 +133,36 @@ Scenarios are separated into two groups below:
 This scenario supports a situation where the destination delegates the responsibility of securing a public endpoint--and potentially performing other functions such as registering clients--to an intermediary. A single intermediary participates in this exchange, forwarding requests directly from the originator to the destination. The destination processes the request and synchronously returns its response.
 
 - The originator obtains the destination's public FHIR service base URL, for example from a FHIR endpoint directory
+
 - The originator initiates a RESTful interaction using the destination's public FHIR service base URL
-- The exchange is received by the inbound gateway intermediary
+
+- The exchange is received by the inbound gateway intermediary through resolution of the public FHIR service base URL
+
 - The intermediary routes the exchange to the destination
+
 - The destination processes the request and returns its response to the intermediary, populating any references to the destination's FHIR server address using its public FHIR service base URL 
+
 - The intermediary passes through the response to the originator
+
 - The originator receives the response
 
 *[Exchange flows and additional details](specification.html#scenario-request-routed-through-a-single-inbound-gateway-intermediary)*
 
 <p></p>
 
-#### Destination uses an inbound gateway Intermediary that in turn routes to another intermediary to deliver the exchange
+#### Destination uses an inbound gateway intermediary that in turn routes to another intermediary to deliver the exchange
 
 This scenario supports a situation where one or more intermediaries participate in delivering the exchange to the destination system. 
 
 Steps
-
 - Originator obtains the destination's public FHIR service address
-
 - Originator initiates a RESTful interaction using the destination's public FHIR service address
-
-- The exchange is received by the inbound gateway intermediary
-
+- The exchange is received by the inbound gateway intermediary through resolution of the public FHIR service base URL
 - The inbound gateway intermediary routes the exchange to a second intermediary. Based on its arrangement with the destination owner or other intermediary(ies), the inbound gateway intermediary determines that the exchange must be directed to a different intermediary for delivery to the endpoint used by the destination organization
-
 - The delegated intermediary routes the exchange to the destination endpoint. (Optionally, one or more intermediaries may also participate in the exchange prior to delivery to the destination)
-
 - The destination processes the request and returns its response to the last intermediary
-
 - The delegated intermediary passes through the response to the inbound gateway intermediary
-
 - The inbound gateway intermediary, which is holding a synchronous connection with the originator, passes through the response
-
 - The originator receives the response
 
 *[Exchange flows and additional details](specification.html#scenario-destination-uses-an-inbound-gateway-intermediary-that-in-turn-routes-through-another-intermediary-to-deliver-the-exchange)*
@@ -177,22 +176,15 @@ Steps
 In this scenario, the originator uses the [FHIR Asynchronous Pattern](https://www.hl7.org/fhir/async.html) to retrieve data from a destination that uses an inbound gateway intermediary as described above. 
 
 Steps
-
 - Originator obtains the destination's public FHIR service address
-
 - Originator initiates a RESTful interaction using the destination's public FHIR service address. In this scenario, the originator populates the `Prefer` HTTP header with `respond-async` to notify the destination that it want to obtain the response data asynchronously
-
-- The exchange is received by the inbound gateway intermediary
-
+- The exchange is received by the inbound gateway intermediary through resolution of the public FHIR service base URL
 - The intermediary routes the exchange to the destination. The `Prefer: respond-async` header is also forwarded to the destination
-
-- The destination processes the request and returns its response to the intermediary. The destination responds with an HTTP status code of `202 Accepted`, and an HTTP header containing a `Content-Location` parameter that specifies the URL at which the response data will be available
-
+- The destination processes the request and returns the location to poll for status to the intermediary. The destination responds with an HTTP status code of `202 Accepted`, and an HTTP header containing a `Content-Location` parameter that specifies the URL at which status of the request will be available
 - The intermediary passes through the response to the originator
-
 - The originator receives the response
-
-- The originator later retrieves the response data using the address previously returned in the `Content-Location` parameter of the initial response from the destination
+- The originator polls for status until the server responds with a "completed" HTTP status code 200 and body containing one or more URLs at which to retrieve the response data
+- The originator retrieves the response data using the URL(s) returned in the completed status message from the destination
 
 *[Exchange flows and additional details](specification.html#scenario-originator-initiates-an-asynchronous-retrieval-of-data-from-a-destination-that-uses-an-inbound-gateway-intermediary)*
 
