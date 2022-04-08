@@ -1,4 +1,4 @@
-Note: This section contains mandatory conformance requirements, noted with "SHALL", below.
+Note: This section contains conformance requirements, noted with "SHALL", "SHOULD" and "MAY".
 <p></p>
 
 ### Transport Security
