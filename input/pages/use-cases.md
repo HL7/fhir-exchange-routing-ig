@@ -81,12 +81,6 @@ While there are many potential exchange scenarios in which an intermediary could
 
 ### Excluded scenarios
 
-<blockquote class="note-to-balloters">
-<p>
-This initial release of the Hybrid/Intermediary Exchange IG focuses on current best practices covering a range of typical intermediary routing scenarios in which exchange happens over the public internet using RESTful interactions, originators address requests directly to destinations' public FHIR service URLs, and authentication and authorization are negotiated between the originator and ultimate destination. Additional scenarios and environments may be addressed in future enhancements to the IG.</p>
-</blockquote>
-<p></P>
-
 This implementation guide does not support environments or scenarios where:
 
 - trust is not negotiated between the originating client and the destination. For example, scenarios where the client establishes trust with an intermediary instead of the destination are not supported

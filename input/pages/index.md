@@ -1,16 +1,3 @@
-﻿<blockquote class="note-to-balloters">
-<p>
-This specification is a proposed Standard for Trial Use. It is expected to continue to evolve and improve through feedback from early adopters and continued industry development and alignment. 
-</p>
-</blockquote>
-
-
-
-
-
-
-<p></p>
-
 ### Overview
 
 This implementation guide provides guidance for enabling FHIR REST interactions across one or more intermediaries using a passive approach. A passive approach is one in which the intermediary is ‘passing through’ the interaction and the requesting actor is not necessarily aware of the presence of the intermediary. Intermediaries in this context are organizations such as clearinghouses, health information exchanges, and similar entities.  We recognize that there are ‘active’ intermediary use cases (TEF QHIN, aggregation services, record locator, etc.) which will be handled in future IGs.
@@ -112,7 +99,7 @@ The guide is organized into the following sections:
   	  </tr>
 	  <tr>
 		<td>Patrick Murta</td>
-		<td><a href="mailto:pmurta@humana.com">pmurta@humana.com</a></td>
+		<td><a href="mailto:PatrickMurta@behavr.com">PatrickMurta@behavr.com</a></td>
 	  </tr>
 	  <tr>
 		<td>Frank McKinney</td>
