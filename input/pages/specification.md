@@ -46,23 +46,19 @@ More critically, any change to the destination's public URL–whether due to a c
 
 Preferably, URL naming will accommodate changes to actors involved in the exchange or relationships between them, to avoid impacting originators.
 
-</div>
-
-
+<p></p><p></p>
 <div>
    <figure>
     <figcaption class="figure-caption"><strong>Figure 2: FHIR Service URLs</strong></figcaption>
     <img src="one-int-routing.png" style="float:none; width:1000px" title="Figure 2: FHIR Service URLs"/>  
     </figure>
 </div>
+
+\* Figure notes:
+- The illustration reflects CNAME mapping of `bcorp.int-one.net`, `fhir.int-one.net` and `fhir.d-corp.com` to the intermediary's server, `int-one.net`
+- Canonical Name (CNAME) records are managed at the registrar that maintains the associated domain name (e.g., `fhir.d-corp.com` is managed at `d-corp.com`'s registrar and `bcorp.int-one.net` is managed at `int-one.net`'s registrar)*
 <p></p>
-
-<blockquote class="note-to-balloters">
-<p>
-This implementation guide does not support URL rewriting, based on stakeholder input regarding the difficulty of reliably locating and adjusting applicable URLs, and the complexity it introduces to security aspects such as signing payload content. It may be considered in future enhancements to the IG.</p>
-</blockquote>
-<p></P>
-
+<p></p>
 
 #### FHIR service base URLs used in routing between intermediaries and to the actual destination server
 
@@ -73,9 +69,7 @@ This guide does not prescribe a particular URL structure to be used; however, it
 - be a valid [FHIR service base URL](https://www.hl7.org/fhir/http.html#root) 
 - be a unique URL associated only with the destination.
 
-**Note: Handling when an HIE plays the role of an aggregator.** In the case where the HIE is the entity serving the FHIR resources (acting as an aggregator that stores/serves the resources to the originator, and there is no visibility to the source systems):
-
-- The HIE is considered the destination, the public URL is that of the HIE, and the source entities would not be visible in the exchange
+_Note: Handling when an HIE plays the role of an aggregator._ In the case where the HIE is the entity serving the FHIR resources (acting as an aggregator that stores/serves the resources to the originator, and there is no visibility to the source systems), the HIE is considered the destination, the public URL is that of the HIE, and the source entities would not be visible in the exchange
 
 #### Sharing of URLs among the destination and partner intermediaries
 
@@ -130,12 +124,6 @@ The required behavior described above for single-intermediary scenarios apply eq
 
 
 ### Unsupported Scenarios
-<p></p>
-<blockquote class="note-to-balloters">
-<p>
-This initial release of the Hybrid/Intermediary Exchange IG focuses on a range of typical intermediary routing scenarios in which exchange happens over the public internet using RESTful interactions, originators address requests directly to destinations' public FHIR service URLs, and authentication and authorization are negotiated between the originator and ultimate destination. Additional scenarios and environments may be addressed in future enhancements to the IG.
-</p>
-</blockquote>
 <p></p>
 Based on the rules and constraints described above, the following underscores scenarios that are not in scope of this implementation guide.
 

@@ -2,7 +2,9 @@
 
 This implementation guide provides guidance for enabling FHIR REST interactions across one or more intermediaries using a passive approach. A passive approach is one in which the intermediary is ‘passing through’ the interaction and the requesting actor is not necessarily aware of the presence of the intermediary. Intermediaries in this context are organizations such as clearinghouses, health information exchanges, and similar entities.  We recognize that there are ‘active’ intermediary use cases (TEF QHIN, aggregation services, record locator, etc.) which will be handled in future IGs.
 
-It supports exchanges where the client and destination FHIR server interact with the same steps, content and responsibilities as in a direct connection--while enabling the destination to "sit behind" an intermediary that can provide value-add services such as cloud-scale technical infrastructure, support services, denial of service protection, and business/operational onboarding.
+The guide supports exchanges where the client and destination FHIR server interact with the same steps, content and responsibilities as in a direct connection--while enabling the destination to "sit behind" an intermediary that can provide value-add services such as cloud-scale technical infrastructure, support services, denial of service protection, and business/operational onboarding.
+
+This version of the IG uses a pattern similar to that of a reverse proxy, where the intermediary server is positioned in front of one or more destination FHIR web servers, brokering requests from originating systems and forwarding them to the appropriate destinations. Future versions of the IG may expand with additional characteristics beyond that pattern.
 
 - Example actors for the initial IG include organizations such clinics, providers, hospitals, payers, etc. These actors may be originators of a RESTful request or the destination system for the request.
 - Example intermediaries for the initial IG include organizations such as clearinghouses (i.e., Change, Availity) and HIEs ( i.e., eHealth Exchange).

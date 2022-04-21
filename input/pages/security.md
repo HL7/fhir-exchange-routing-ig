@@ -29,10 +29,11 @@ Implementers MAY adopt UDAP workflows for client registration, authentication an
 
 ### Other Security and Privacy Considerations
 
-Implementers of this guide SHOULD follow core FHIR security principles and protect patient privacy as described in the FHIR Security and Privacy Module.
+Implementers of this guide SHOULD follow core FHIR security principles and protect patient privacy as described in the [FHIR Security and Privacy Module](https://www.hl7.org/fhir/secpriv-module.html) which:
+  -  provides guidance related to communication security, authentication, authorization/access control, audit, digital signatures, attachments, labels, narrative, and input validation. 
+  -  describes how to protect a FHIR server through access control and authorization, how to document what permissions a user has granted, and how to keep records about what events have been performed.
 
-- The [FHIR Security and Privacy Module](https://www.hl7.org/fhir/secpriv-module.html) provides guidance related to communication security, authentication, authorization/access control, audit, digital signatures, attachments, labels, narrative, and input validation. The FHIR security specification is available [here](https://www.hl7.org/fhir/security.html).
-- The [Security and Privacy Module](https://www.hl7.org/fhir/secpriv-module.html) describes how to protect a FHIR server through access control and authorization, how to document what permissions a user has granted, and how to keep records about what events have been performed.
+The FHIR security specification is available [here](https://www.hl7.org/fhir/security.html).
 
 <br><br>
 
