@@ -3,10 +3,12 @@ Note: This section contains conformance requirements, noted with "SHALL", "SHOUL
 
 ### Transport Security
 
-All exchanges in the exchange SHALL use Transport Layer Security (TLS).
+Communication security SHALL conform with the guidelines stated in [FHIR Security](https://www.hl7.org/fhir/security.html).
 
-- The inbound gateway intermediary SHALL hold the TLS certificate for the destination's public FHIR service base URL
-- The destination system and any delegated intermediaries SHALL hold the certificates for their servers' private URLs.
+When using TLS:
+- the inbound gateway intermediary SHALL hold the TLS certificate for the destination’s public FHIR service base URL
+- the certificates exchanged by the destination system and any delegated intermediaries SHALL reflect their servers’ private URLs.
+
 
 <p></p>
 

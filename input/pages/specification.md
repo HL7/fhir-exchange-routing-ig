@@ -56,7 +56,7 @@ Preferably, URL naming will accommodate changes to actors involved in the exchan
 
 \* Figure notes:
 - The illustration reflects CNAME mapping of `bcorp.int-one.net`, `fhir.int-one.net` and `fhir.d-corp.com` to the intermediary's server, `int-one.net`
-- Canonical Name (CNAME) records are managed at the registrar that maintains the associated domain name (e.g., `fhir.d-corp.com` is managed at `d-corp.com`'s registrar and `bcorp.int-one.net` is managed at `int-one.net`'s registrar)*
+- Canonical Name (CNAME) records are managed at the registrar that maintains the associated domain name (e.g., `fhir.d-corp.com` is managed at `d-corp.com`'s registrar and `bcorp.int-one.net` is managed at `int-one.net`'s registrar)
 <p></p>
 <p></p>
 
