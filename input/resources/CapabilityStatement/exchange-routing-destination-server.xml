@@ -7,7 +7,7 @@
   <title value="Exchange Routing Destination Server Capability Statement" />
   <status value="active" />
   <experimental value="false" />
-  <date value="2021-11-15T00:00:00-05:00" />
+  <date value="2022-05-17T00:00:00-05:00" />
   <publisher value="HL7 International - FHIR Infrastructure" />
   <description value="This CapabilityStatement describes the expected capabilities of an destination FHIR server that conforms to the conventions of the Hybrid / Intermediary Exchange FHIR implementation guide." />
   <jurisdiction>

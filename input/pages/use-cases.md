@@ -1,9 +1,5 @@
 This guide supports scenarios where intermediaries take part in RESTful FHIR exchanges between an initiating system (the "originator") and the desired endpoint system (the "destination").  
 
-<div class="fm_rec"><b>Proposed resolution FHIR-35167: add...</b><br/><br/>
-Murta to do per Feb 1 call: Expand background on the rationales for using an intermediary (cloud scalability, security, other reasons)
-</div>
-
 Potential applications of this initial IG include use by implementers of payer/provider use cases such as Da Vinci value-based care use case in which intermediaries may bridge connectivity between actors. Other HL7 accelerators (CARIN, Gravity, etc.) are developing disparate actor use cases in which intermediaries may be involved.
 
 Specifically, it focuses on scenarios where:
@@ -54,11 +50,6 @@ This page defines the roles that intermediaries play in the scenarios addressed 
 <p></p>
 
 ### Scenario Overview
-
-<div class="fm_rec"><b>Proposed resolution FHIR-35381: add...</b><br/><br/>
-To do per Feb 1 call: Compare the approach to what is commonly referred to as a reverse proxy. Call out similarities and differences
-</div>
-
 
 While there are many potential exchange scenarios in which an intermediary could play a part, this guide focuses on a specific set where:
 
