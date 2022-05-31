@@ -19,7 +19,7 @@ This guide assumes that the destination and intermediary participants have estab
 
 #### Destination's public FHIR service base URL
 
-To support the routing approaches described in this guide, the destination SHALL have a single public FHIR service base URL for each FHIR service it makes available. 
+The destination SHALL have a single public FHIR service base URL for each FHIR service it makes available using the passive intermediary routing approach described in this guide.
 
 The partnering destination and inbound gateway intermediary are free to determine the appropriate structure of the public FHIR service base URL to meet their preferences and technical requirements. For example, the URL's hostname may refer to either the destination or the intermediary and path segments may be included to identify the destination, specify the supported FHIR version, etc. In addition, the destination SHALL  [reference its public URL in returned FHIR resources](#references-to-the-service-base-url-in-returned-fhir-resources).
 
