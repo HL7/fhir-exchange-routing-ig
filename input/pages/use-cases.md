@@ -57,7 +57,7 @@ While there are many potential exchange scenarios in which an intermediary could
 - an intermediary plays the **inbound gateway** role described above, accepting requests from the originator
 - one or more additional intermediaries optionally play the **delegated function Intermediary** role described above, assisting in routing to the destination
 - the originator directs its request to the destination’s public FHIR service URL, and the destination likewise uses that public FHIR service URL when referring to itself in the response (the destination populates elements referencing the destination server in returned FHIR resources, e.g., fullUrl, using the pubic FHIR service base URL)
-- trust has been established or is negotiated between the originating client and the destination; any participating intermediaries play only a pass-through role in authentication and authorization
+- trust has been established or is negotiated between the originating client and the destination; any participating intermediaries play only a pass-through role in authentication and authorization (see [Pass-Through Security](security.html#pass-through-security))
 - the originator may be unaware that an intermediary will play a role in routing the request, and has no additional responsibilities beyond those in a typical point-to-point FHIR exchange.
 
 <p></p>

@@ -1,7 +1,11 @@
 Note: This section contains conformance requirements, noted with "SHALL", "SHOULD" and "MAY".
 <p></p>
 
-### Transport Security
+### Pass-Through Security
+The Pass-Through Security approach described below supports the implementation guide's passive intermediary model. It may also be suitable for other models where the intermediary plays a more active role in serving or modifying the returned content. 
+- Note: Additional security models may be defined in future versions of this IG as needed to support expanded intermediary roles
+
+#### Transport Security
 
 Communication security SHALL conform with the guidelines stated in [FHIR Security](https://www.hl7.org/fhir/security.html).
 
@@ -12,7 +16,7 @@ When using TLS:
 
 <p></p>
 
-### Trust Determination
+#### Trust Determination
 
 In this exchange model, trust is negotiated or established solely between the originator and destination. The destination SHALL determine whether it trusts the originator or not; any intermediaries involved in the exchange SHALL play a passive, "pass through" role in the process.
 

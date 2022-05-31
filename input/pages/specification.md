@@ -19,7 +19,7 @@ This guide assumes that the destination and intermediary participants have estab
 
 #### Destination's public FHIR service base URL
 
-To support the routing approaches described in this guide, the destination SHALL have a single, public FHIR service base URL for each FHIR service it makes available. 
+To support the routing approaches described in this guide, the destination SHALL have a single public FHIR service base URL for each FHIR service it makes available. 
 
 The partnering destination and inbound gateway intermediary are free to determine the appropriate structure of the public FHIR service base URL to meet their preferences and technical requirements. For example, the URL's hostname may refer to either the destination or the intermediary and path segments may be included to identify the destination, specify the supported FHIR version, etc. In addition, the destination SHALL  [reference its public URL in returned FHIR resources](#references-to-the-service-base-url-in-returned-fhir-resources).
 
@@ -87,9 +87,7 @@ For example, the Bundle.entry.fullUrl element for a resource on the destination'
 
 #### The originating client negotiates trust with the destination
 
-In this exchange model, trust has been established or is negotiated solely between the originator and destination. It is the destination which makes the decision as to whether it trusts the originator or not; any intermediaries involved in the exchange play a passive, "pass through" role in the process. 
-
-See [the Security section](security.html) for additional details.
+In the passive intermediary exchange model, trust has been established or is negotiated solely between the originator and destination. It is the destination which makes the decision as to whether it trusts the originator or not; any intermediaries involved in the exchange play a passive, "pass through" role in the process using the [Pass-Through Security model](security.html#pass-through-security) described in the Security section of the IG.
 
 <p></p>
 
