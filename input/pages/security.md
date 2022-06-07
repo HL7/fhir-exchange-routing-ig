@@ -2,7 +2,7 @@ Note: This section contains conformance requirements, noted with "SHALL", "SHOUL
 <p></p>
 
 ### Pass-Through Security
-The Pass-Through Security approach described below supports the implementation guide's passive intermediary model. It may also be suitable for other models where the intermediary plays a more active role in serving or modifying the returned content. 
+The Pass-Through Security approach defines the interaction between the initiator and the destination, with minimal involvement of the intermediary. As described below, it supports this implementation guide’s passive intermediary model. It may also be suitable for other models where the intermediary plays a more active role in serving or modifying the returned content. 
 - Note: Additional security models may be defined in future versions of this IG as needed to support expanded intermediary roles
 
 #### Transport Security
