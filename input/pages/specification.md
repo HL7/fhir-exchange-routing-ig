@@ -115,6 +115,15 @@ The required behavior described above for single-intermediary scenarios apply eq
 
 <p></p>
 
+### Sharing additional routing information between intermediary and destination
+Because the intermediary role described here is similar to that of a reverse proxy, intermediaries may employ additional HTTP header field standards to convey additional routing information to the destination--such as the originator’s IP address and the Host request header field received in the request from the originator to the intermediary.
+
+While the intermediary responsibilities described in this IG do not require it, sharing of this additional routing information may benefit a destination server that wishes to support additional features beyond the scope of this guide. When that is the case, implementers are encouraged to consider supporting these IETF standards:
+
+- [IETF rfc7239 - Forwarded HTTP Extension](https://datatracker.ietf.org/doc/html/rfc7239)
+
+- [IETF rfc2068 – HTTP 1.1 ("Host" and "Via" headers)](https://www.ietf.org/rfc/rfc2068.txt)
+<p></p>
 
 ### Unsupported Scenarios
 <p></p>
