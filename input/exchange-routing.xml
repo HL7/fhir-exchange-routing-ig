@@ -13,11 +13,10 @@
         </div>
     </text>
     <url value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing"/>
- 	<version value="0.1.0"/> 
-    <!-- <version value="current"/> -->
+ 	<version value="1.0.0"/> 
     <name value="HybridIntermediaryExchange"/>
     <title value="Hybrid / Intermediary Exchange"/>
-    <status value="draft"/>
+    <status value="active"/>
      <publisher value="HL7 International - FHIR Infrastructure" />
     <contact>
         <name value="HL7 International - FHIR Infrastructure"/>
