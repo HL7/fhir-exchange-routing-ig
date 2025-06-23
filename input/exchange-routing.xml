@@ -2,7 +2,7 @@
 <ImplementationGuide xmlns="http://hl7.org/fhir">
     <id value="hl7.fhir.us.exchange-routing"/>
     <meta>
-        <lastUpdated value="2021-03-01T00:00:00.000+00:00"/>
+        <lastUpdated value="2025-06-23T00:00:00.000+00:00"/>
     </meta>
     <text>
         <status value="additional"/>
@@ -34,10 +34,10 @@
         </telecom>
     </contact>
     <contact>
-      <name value="Frank McKinney" />
+      <name value="David Pyke" />
       <telecom>
         <system value="email" />
-        <value value="frank.mckinney@pocp.com" />
+        <value value="david@pyke.ca" />
       </telecom>
     </contact>
     <description value="This FHIR implementation Guide describes the health care standard for HTTP exchange in a hybrid model of both point to point communication and intermediary." />
