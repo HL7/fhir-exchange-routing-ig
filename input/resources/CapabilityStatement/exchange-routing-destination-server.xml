@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <id value="exchange-routing-destination-server" />
+   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg" >
+        <valueCode value="fhir" />
+    </extension>
   <url value="http://hl7.org/fhir/us/exchange-routing/CapabilityStatement/exchange-routing-destination-server" />
   <version value="0.1.0" />
   <name value="ExchangeRoutingDestinationServerCapabilityStatement" />
@@ -8,7 +11,7 @@
   <status value="active" />
   <experimental value="false" />
   <date value="2022-05-17T00:00:00-05:00" />
-  <publisher value="HL7 International - FHIR Infrastructure" />
+  <publisher value="HL7 International / FHIR Infrastructure" />
   <description value="This CapabilityStatement describes the expected capabilities of an destination FHIR server that conforms to the conventions of the Hybrid / Intermediary Exchange FHIR implementation guide." />
   <jurisdiction>
     <coding>

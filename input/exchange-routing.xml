@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ImplementationGuide
-    xmlns="http://hl7.org/fhir">
-    <id value="exchange-routing"/>
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+    <id value="hl7.fhir.us.exchange-routing"/>
     <meta>
         <lastUpdated value="2021-03-01T00:00:00.000+00:00"/>
     </meta>
@@ -12,14 +11,23 @@
             <div>This FHIR implementation Guide describes the health care standard for HTTP exchange in a hybrid model of both point to point communication and intermediary.</div>
         </div>
     </text>
-    <url value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing"/>
+     <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg" >
+        <valueCode value="fhir" />
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+         <valueCode value="trial-use" />
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+        <valueInteger value="1" />
+    </extension>
+	<url value="http://hl7.org/fhir/us/exchange-routing/ImplementationGuide/exchange-routing"/>
  	<version value="1.0.0"/> 
     <name value="HybridIntermediaryExchange"/>
     <title value="Hybrid / Intermediary Exchange"/>
     <status value="active"/>
-     <publisher value="HL7 International - FHIR Infrastructure" />
+     <publisher value="HL7 International / FHIR Infrastructure" />
     <contact>
-        <name value="HL7 International - FHIR Infrastructure"/>
+        <name value="HL7 International / FHIR Infrastructure"/>
         <telecom>
             <system value="url"/>
             <value value="http://www.hl7.org/Special/committees/fiwg"/>

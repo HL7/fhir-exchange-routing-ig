@@ -1,1 +1,10 @@
+/fsh-generated
+/input-cache
 /output
+/temp
+/template
+/.vscode
+/ig-template
+_genonce.bat
+_updatePublisher.bat
+_build.bat
