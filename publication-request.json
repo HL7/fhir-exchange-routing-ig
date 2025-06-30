@@ -2,6 +2,7 @@
     "package-id" : "hl7.fhir.us.exchange-routing",
     "version" : "1.0.0-withdrawal",
     "mode" : "withdrawal",
+    "status" : "withdrawn"
     "desc" : "Withdrawal due to unmet objectives.  Please contact fast@hl7.org if your organization wishes to sponsor a new project of this type",
     "descmd" : "This guide is withdrawn. Future work to expand it to include more options and unknown numbers of intermediaries can be pursued by request to fast@hl7.org."
 }
